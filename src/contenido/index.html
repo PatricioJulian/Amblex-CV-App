@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html ng-app>
+<!-- AMBLEX CV CREATOR -->
+	<!-- 		Versión Beta 3.2 .1
+			Autor: Patricio J. Gerpe  
+			Ultima Actualización: 02/02/2016
+	-->
+<!-- El proyecto consiste en desarrollar un template de Curriculums Vitae, en donde el usuario registra sus datos profesionales en un form y con dicha información se devuelve rápidamente un Curriculum completamente diseñado diamico, vistoso e interactivo listo para imprimir. -->
+
+<!-- Para dicho desafio utilicé tecnologías como AngularJS, Jquery, Bootstrap y Animate.Css en un diseño de Single Page App-->
+<head>
+<meta charset="UTF-8">
+<title>Curriculum Vitae {{nombre}} {{apellido}}</title>
+<!-- Diseño: CSS + Jquery -->
+<link href="../diseño/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="../diseño/css/animate.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="../diseño/css/estilo.css" rel="stylesheet"/>
+<link rel="stylesheet" media="print" href="../diseño/css/print.css">
+<link rel="stylesheet" href="../diseño/css/jquery.custom-scrollbar.css">
+
+<!-- UX: Jquery -->
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script src="../comportamiento/js/jquery.custom-scrollbar.js"></script>
+<script src="../comportamiento/js/read.js"></script>
+<script src="../comportamiento/js/comportamiento.js"></script>
+<script src="../comportamiento/js/bootstrap.min.js"></script>
+
+<script src="../comportamiento/js/bootstrap-notify.min.js"></script>
+
+<script type="text/javascript" src="https://blockchain.info/Resources/wallet/pay-now-button.js"></script>
+
+
+
+
+<script src="../comportamiento/js/validator.js"></script>
+
+<!-- Controlador: AngularJS -->
+<script src="../comportamiento/js/angular.min.js"></script>
+<!-- <script src="../comportamiento/js/formCrtl.js"></script> -->
+</head>
+
+<body>
+
+<div class="container-fluid noPrint">
+	<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span>  Ayuda</button>
+
+	<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Bienvenido a Amblex CVApp</h4>
+      </div>
+      <div class="modal-body">
+        <p>Complete el formulario de la parte superior y se auto-generará un curriculum listo para imprimir.</p>
+        <p>Una vez finalizada la carga con <kbd>ctrl + p</kbd> vas a poder imprimir tu cv</p>
+        <p><strong> ¡IMPORTANTE! </strong> Para una correcta renderización la impresión debe configurarse en un tamaño de hoja A3, muy pronto la plantilla será ajustada para el tamaño A4 </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Entendido</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!--
+<script src="http://coinwidget.com/widget/coin.js"></script>
+<script>
+CoinWidgetCom.go({
+  wallet_address: "36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo"
+  , currency: "bitcoin"
+  , counter: "amount"
+  , alignment: "bl"
+  , qrcode: true
+  , auto_show: true
+  , lbl_button: "Donar para estudios!"
+  , lbl_address: "Mi dirección Bitcoin:"
+  , lbl_count: "donaciones"
+  , lbl_amount: "BTC"
+});
+</script> -->
+
+<!-- Botón de Donanciones -->
+<span style="overflow: hidden; border: 1px solid black; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 4px; padding-left: 0px; font-family: Arial; font-size: 12px; font-weight: bold; background-color: white;">
+	<span style="padding: 4px; padding-left: 8px; background-color: #E98A0A; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: white;">
+		<a data-toggle="tooltip" data-placement="bottom" title="¡Con tu ayuda puedo seguir desarrollando nuevos proyectos y financiar mis estudios!" href="http://www.bitcoin.org/" style="text-decoration: none; color: white;">
+			<span style="-webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-weight: normal; color: white; font-size: 15px; background-color: white; color: #E98A0A; padding: 1px 5px; padding-top: 0px;">&#3647;</span>
+			Dona para estudios
+		</a>
+	</span>
+	<span data-toggle="tooltip" data-placement="right" title="Para donar haz una transacción con tu Billetera Bitcoin a esta dirección, ¡muy pronto también agregaré mercadopago!" style="padding: 5px;">
+		36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo
+	</span>
+</span>
+</div> 
+    <div class="noPrint">
+           <b> Vista previa: </b>
+    <div class="btn-group btn-toggle"> 
+    <button  id="ocultarCV" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-close"></span>Off</button>
+    <button  id="mostrarCV" class="btn btn-primary active btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-open"></span>On</button>
+  </div>
+</div>
+
+
+
+	<div class="container-fluid noPrint" id="top" align="center">
+	<h1 style="text-align:center;">AMBLEX CREADOR DE CVS</h1>
+
+
+  <!-- FORMULARIO-->
+
+  <!-- Datos Personales-->
+	<form id="formulario" class="form-inline"  data-toggle="validator" role="form" method="get" action="#">
+    <div ID="formP1" class="form-group">
+      <h2> Datos Personales </h2>
+		<!-- Color de Fondo-->
+		<label for="bg">Color:</label> 
+        <input type="color" class="theme" id="color"/>
+		<!-- Nombre -->
+		<div class="form-group">
+	   <label class="wb-inv" id="nombreInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu nombre!">Tu nombre: </label>
+       <input type="text" id="espacioNombre" class="input-sm form-control" ng-model="nombre"  placeholder="¿Cuál es tu nombre?" required />
+       </div>
+       <!-- Apellido -->
+       <div class="form-group">
+       <label id="apellidoInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu apellido!">Apellido: </label>
+       <input type="text" id="espacioApellido" class="input-sm form-control" ng-model="apellido" placeholder="¿Cuál es tu Apellido?" required />
+   		</div>
+       <!-- Foto -->
+       <div class="form-group">
+       <label for="fotoUrl">Foto de perfil</label><span class="glyphicon glyphicon-open"></span>
+		<input type="file" accept="image/x-png, image/gif, image/jpeg" onchange="readURL(this);" class="form-control" id="fotoUrl" />
+		</div>
+       <!-- DNI -->
+       <div class="form-group">
+       <label id="dniInicia">DNI: </label>
+       <input type="number" id="espacioDNI" class="input-sm" ng-model="DNI" placeholder="¿Cuál es tu DNI?" required />
+   		</div>
+        <!-- Edad -->
+        <div class="form-group">
+       <label id="edadInicia" data-toggle="tooltip" data-placement="right">Edad: </label>
+       <input type="number" id="espacioEdad" class="input-sm form-control" ng-model="edad" placeholder="¿Cuál es tu edad?"required />
+   		</div>
+       <!-- Estado Civil -->
+       <div class="form-group">
+       	<label for="estadoCivil"> Estado Civil: </label>
+    	<select class="form-control" name="estadoCivil" ng-model="data.estadoCivil" required>
+      		<option value="Soltero/a">Soltero/a</option>
+      		<option value="Casado/a">Casado/a</option>
+      		<option value="Divorciado/a">Divorciado/a</option>
+      		<option value="Viudo/a">Viudo/a</option>
+    	</select>
+    	</div>
+        <!-- Celular -->
+       	<div class="form-group">
+       		<label id="celularInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu nro de Celular!">Celular: </label>
+       		<input type="number" id="espacioCelular" class="input-sm form-control" ng-model="celular" placeholder="¿Cuál es tu nro de Celular?" required />
+   		</div>
+       <!-- Fijo -->
+       	<div class="form-group">
+       <label id="fijoInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu nro de telefono fijo!">Telefono: </label>
+       <input type="number" id="espacioFijo" class="input-sm form-control" ng-model="fijo" placeholder="¿Cuál es tu nro de telefono?"  />
+       </div>
+       <!-- Email -->
+       	<div class="form-group">
+       	<i class="fa fa-envelope-o fa-fw"></i>
+       <label id="emailInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu email!">Email: </label>
+       <input type="email" id="espacioFijo" class="input-sm form-control" ng-model="email" placeholder="¿Cuál es tu email?" data-error="Porfavor escriba una dirección de email correcta" required />
+   		</div>
+        <!-- Dirección -->
+        <div class="form-group">
+       <label id="direccionInicia" data-toggle="tooltip" data-placement="right">Dirección: </label>
+       <input type="text" id="espaciodirCalle" class="input-sm" ng-model="calle" placeholder="¿En qué calle vivis?" required />
+       <input type="number" id="espaciodirNro" class="input-sm" ng-model="dirNro" placeholder="¿A qué altura?" required/>
+		<label for="ciudad"> Zona: </label>
+    	<select name="ciudad" ng-model="data.ciudad" required>
+      		<option value="Capital Federal">Capital Federal</option>
+      		<option value="GBA Norte">GBA Norte</option>
+      		<option value="GBA Sur">GBA Sur</option>
+      		<option value="GBA Oeste">GBA Oeste</option>
+    	</select>
+    	</div>
+
+    
+      </div>
+
+    <div ID="formP2" class="form-group">
+      <h2> Marco Educacional </h2>
+    <!--Marco Educacional -->
+
+    <div class="form-group">
+    <ul>
+    <!--Máximo nivel alcanzado -->
+      <li>
+            <div class="form-group">
+              <label>Titulo: </label>
+              <input type="text" class="input-sm form-control" ng-model="form1.NombreTitulo" placeholder="¿Cuál el nombre de tu titulo?" maxlength="35" data-toggle="tooltip" data-placement="right" title="¡Recuerda, comienza con tu máximo nivel educativo alcanzado, Ej.: Licenciatura en Tecnología de los Alimentos " required />
+            </div>   
+
+            <div class="form-group">
+              <label>Nombre Institución: </label>
+              <input type="text" class="input-sm form-control" ng-model="form1.NombreInst" placeholder="¿Cuál el nombre de la Institución Educativa?" maxlength="35" data-toggle="tooltip" data-placement="right" title="" required />
+            </div> 
+
+            <div class="form-group">
+              <label>Materias Aprobadas: </label>
+              <input type="number" class="input-sm form-control" ng-model="form1.Materias" placeholder="¿Cuántas materias tienes aprobadas?" maxlength="2" data-toggle="tooltip" data-placement="right" title="" required />
+            </div> 
+
+            <div class="form-group">
+              <label>Total Materias: </label>
+              <input type="number" class="input-sm form-control" ng-model="form1.TotalMaterias" placeholder="¿De cuántas materias consta la carrera?" maxlength="2" data-toggle="tooltip" data-placement="right" title="" required />
+            </div> 
+
+           <div class="form-group">
+       <label>Fecha de Ingreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="form1.fechaINC" placeholder="¿Cuándo comenzaste a estudiar aca?" min="1959-12-31" max="2017-01-01" required /> 
+
+       <label>Fecha de Egreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="form1.fechaEGR" placeholder="¿Cuándo te graduaste o estimas graduarte" min="1959-12-31" max="2030-01-01" required />
+      </div>  
+
+
+      </li>
+
+          <!--2do nivel alcanzado -->
+      <li>
+            <div class="form-group">
+              <label>Titulo: </label>
+              <input type="text" class="input-sm form-control" ng-model="form2.NombreTitulo" placeholder="¿Cuál el nombre de tu titulo?" maxlength="35" data-toggle="tooltip" data-placement="right" title="¡Recuerda, comienza con tu 2do máximo nivel educativo alcanzado, Ej.: Bachillerato en Comercialización y Administración de Negocios" required />
+            </div>   
+
+            <div class="form-group">
+              <label>Nombre Institución: </label>
+              <input type="text" class="input-sm form-control" ng-model="form2.NombreInst" placeholder="¿Cuál el nombre de la Institución Educativa?" maxlength="35" data-toggle="tooltip" data-placement="right" title="" required />
+            </div> 
+
+            <div class="form-group">
+              <label>Materias Aprobadas: </label>
+              <input type="number" class="input-sm form-control" ng-model="form2.Materias" placeholder="¿Cuántas materias tienes aprobadas?" maxlength="2" data-toggle="tooltip" data-placement="right" title="" required />
+            </div> 
+
+            <div class="form-group">
+              <label>Total Materias: </label>
+              <input type="number" class="input-sm form-control" ng-model="form2.TotalMaterias" placeholder="¿De cuántas materias consta la carrera?" maxlength="2" data-toggle="tooltip" data-placement="right" title="" required />
+            </div> 
+
+           <div class="form-group">
+       <label>Fecha de Ingreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="form2.fechaINC" placeholder="¿Cuándo comenzaste a estudiar aca?" min="1959-12-31" max="2017-01-01" required /> 
+
+       <label>Fecha de Egreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="form2.fechaEGR" placeholder="¿Cuándo te graduaste o estimas graduarte" min="1959-12-31" max="2030-01-01" required />
+      </div>  
+
+
+      </li>
+
+    </ul>
+    </div>
+
+    <!--Idiomas -->
+
+    <!--2da Lengua -->
+        <div class="form-group">
+    <label for="lengua2"> Segundo Idioma: </label>
+      <select name="lengua2" ng-model="data.lengua2" required>
+          <option value="Ingles">Ingles</option>
+          <option value="Portugues">Portugues</option>
+          <option value="Frances">Frances</option>
+          <option value="Aleman">Aleman</option>
+          <option value="Chino Mandarin">Chino Mandarin</option>
+          <option value="Ruso">Ruso</option>
+      </select>
+
+      <label for="lengua2lvl"> Dominio: </label>
+      <select name="lengua2lvl" ng-model="data.lengua2lvl" required>
+          <option value="Bilingüe">Bilingüe</option>
+          <option value="Avanzado">Avanzado</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Básico">Básico</option>
+          <option value="Inicial">Inicial</option>
+      </select>
+
+        <label>Certificado
+         <input type="radio" ng-model="cert.name" id="certiLeng2CheckSi" value="Sí">
+          Sí
+      </label>
+      <label>
+        <input type="radio" ng-model="cert.name" id="certiLeng2CheckNo" ng-value="No">
+          No
+      </label>
+
+      </div>
+
+      <!--3ra Lengua -->
+        <div class="form-group">
+    <label for="lengua3"> Tercer Idioma: </label>
+      <select name="lengua3" ng-model="data.lengua3" required>
+          <option value="Ingles">Ingles</option>
+          <option value="Portugues">Portugues</option>
+          <option value="Frances">Frances</option>
+          <option value="Aleman">Aleman</option>
+          <option value="Chino Mandarin">Chino Mandarin</option>
+          <option value="Ruso">Ruso</option>
+      </select>
+
+      <label for="lengua3lvl"> Dominio: </label>
+      <select name="lengua3lvl" ng-model="data.lengua3lvl" required>
+          <option value="Bilingüe">Bilingüe</option>
+          <option value="Avanzado">Avanzado</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Básico">Básico</option>
+          <option value="Inicial">Inicial</option>
+      </select>
+
+              <label>Certificado
+         <input type="radio" ng-model="cert3.name" id="certiLeng3CheckSi" value="Sí">
+          Sí
+      </label>
+      <label>
+        <input type="radio" ng-model="cert3.name" id="certiLeng3CheckNo" ng-value="No">
+          No
+      </label>
+
+      </div>
+
+      <!--Conocimientos Duros -->
+
+    <!--Paquete Office -->
+        <div class="form-group">
+    <label for="office"> Paquete Office  </label>
+
+      <label for="officelvl"> Dominio: </label>
+      <select name="officelvl" ng-model="data.officelvl" required>
+          <option value="Experto">Experto</option>
+          <option value="Avanzado">Avanzado</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Básico">Básico</option>
+          <option value="Nulo">Nulo</option>
+      </select>
+
+        <label>Certificado:
+         <input type="radio" ng-model="certO.name" id="certiOfficeCheckSi" value="Sí">
+          Sí
+      </label>
+      <label>
+        <input type="radio" ng-model="certO.name" id="certiOfficeCheckNo" ng-value="No">
+          No
+      </label>
+
+      </div>
+
+      <!--Programación -->
+        <div class="form-group">
+    <label for="programacion"> Programación </label>
+
+      <label for="programacionlvl"> Dominio: </label>
+      <select name="programacionlvl" ng-model="data.programacionlvl" required>
+          <option value="Experto">Experto</option>
+          <option value="Avanzado">Avanzado</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Básico">Básico</option>
+          <option value="Nulo">Nulo</option>
+      </select>
+
+              <label>Certificado
+         <input type="radio" ng-model="certP.name" id="certiProgCheckSi" value="Sí">
+          Sí
+      </label>
+      <label>
+        <input type="radio" ng-model="certP.name" id="certiProgCheckNo" ng-value="No">
+          No
+      </label>
+
+      </div>
+
+
+    </div>
+
+      <div ID="formP3" class="form-group">
+        <h2> Marco Laboral </h2>
+    <!--Marco Ocupacional -->
+
+    <!--Experiencia más reciente -->
+
+     <div class="form-group">
+     <ol>
+     <li> <b data-toggle="tooltip" data-placement="right" title="¡Recuerda, en caso de no contar con experiencia puedes capitalizar vivencias extra-laborales como voluntariados o proyectos estudiantiles! "> Tu experiencia más reciente -></b>  
+      <div class="form-group">
+       <label>Nombre Organización: </label>
+       <input type="text" class="input-sm form-control" ng-model="exp1.NombreOrg" placeholder="¿Cuál el nombre de la organización?" maxlength="35" required />
+      </div>   
+
+        <div class="form-group">
+       <label data-toggle="tooltip" data-placement="right" title="Escribe en breves palabras el tamaño de la organización y su actividad">Industria: </label>
+       <input type="text" class="input-sm form-control" ng-model="exp1.IndustriaOrg" placeholder="¿A qué se dedica esa organización?" maxlength="35" data-toggle="tooltip" data-placement="right" title="Ej.: Multinacional de Desarrollo de Software" required />
+      </div>    
+
+          <div class="form-group">
+       <label>Fecha de Ingreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="exp1.fechaING" placeholder="¿Cuándo comenzaste a trabajar aca?" min="1959-12-31" max="2017-01-01" required /> 
+
+       <label>Fecha de Egreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="exp1.fechaEGR" placeholder="¿Cuándo terminaste de trabajar aca?" min="1959-12-31" max="2017-01-01" required />
+      </div>  
+
+            <div class="form-group">
+       <label>Posición Desempeñada: </label>
+       <input type="text" class="input-sm form-control" ng-model="exp1.Pos" placeholder="¿Que posición desempeñaste" maxlength="35" required />
+      </div>  
+
+            <div class="form-group">
+    <label data-toggle="tooltip" data-placement="right" data-html="true" title="Trata de ser lo más concreto posible. Es recomendable usar terminologia estadistica. Demuestra cuanto has ayudado a que mejore el desarrollo de tu empresa">Logros obtenidos: </label>
+      <textarea name="exp1.Log" class="input-sm" ng-model="exp1.Log" maxlength="350" required>
+    </textarea>
+    </div> 
+
+               <div class="form-group">
+    <label data-toggle="tooltip" data-placement="right" data-html="true" title="">Tareas realizadas: </label>
+      <textarea name="exp1.Tar" class="input-sm" ng-model="exp1.Tar" maxlength="350" required>
+    </textarea>
+    </div> 
+
+     </li>
+
+<!--Experiencia 2 -->
+          <li> <b data-toggle="tooltip" data-placement="right" title="¡Recuerda, en los CVs siempre es conveniente que se ubiquen los trabajos más recientes en la parte superior y hacia abajo se ordenen las experiencias que siguen en el plano cronologico, los reclutadores verán como haz progresado! "> Tu siguiente experiencia más reciente -></b>  
+      <div class="form-group">
+       <label>Nombre Organización: </label>
+       <input type="text" class="input-sm form-control" ng-model="exp2.NombreOrg" placeholder="¿Cuál el nombre de la organización?" maxlength="35" required />
+      </div>   
+
+        <div class="form-group">
+       <label>Industria: </label>
+       <input type="text" class="input-sm form-control" ng-model="exp2.IndustriaOrg" placeholder="¿A qué se dedica esa organización?" maxlength="35" data-toggle="tooltip" data-placement="right" title="Ej.: Pymes de Consultoria Juridica" required />
+      </div>    
+
+          <div class="form-group">
+       <label>Fecha de Ingreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="exp2.fechaING" placeholder="¿Cuándo comenzaste a trabajar aca?" min="1959-12-31" max="2017-01-01" required /> 
+
+       <label>Fecha de Egreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="exp2.fechaEGR" placeholder="¿Cuándo terminaste de trabajar aca?" min="1959-12-31" max="2017-01-01" required />
+      </div>  
+
+            <div class="form-group">
+       <label>Posición Desempeñada: </label>
+       <input type="text" class="input-sm form-control" ng-model="exp2.Pos" placeholder="¿Que posición desempeñaste" maxlength="35" data-toggle="tooltip" data-placement="right" title="Ej.: Cadete Administrativo" required />
+      </div>  
+
+            <div class="form-group">
+    <label data-toggle="tooltip" data-placement="right" data-html="true" title="Comunica tu participación de manera asertiva, en todo trabajo hay conflictos, ¿Recuerdas haber resuelto uno positivamente? ¿Cómo repercutió en tus compañeros?">Logros obtenidos: </label>
+      <textarea name="exp2.Log" class="input-sm" ng-model="exp2.Log" maxlength="350" required>
+    </textarea>
+    </div> 
+
+               <div class="form-group">
+    <label data-toggle="tooltip" data-placement="right" data-html="true" title="">Tareas realizadas: </label>
+      <textarea name="exp2.Tar" class="input-sm" ng-model="exp2.Tar" maxlength="350" required>
+    </textarea>
+    </div> 
+
+     </li>
+
+<!--Experiencia 3 -->
+          <li> <b> Tu siguiente experiencia más reciente -></b>  
+      <div class="form-group">
+       <label>Nombre Organización: </label>
+       <input type="text" class="input-sm form-control" ng-model="exp3.NombreOrg" placeholder="¿Cuál el nombre de la organización?" maxlength="35" required />
+      </div>   
+
+        <div class="form-group">
+       <label>Industria: </label>
+       <input type="text" class="input-sm form-control" ng-model="exp3.IndustriaOrg" placeholder="¿A qué se dedica esa organización?" maxlength="35" data-toggle="tooltip" data-placement="right" title="Ej.: Outsourcing de Telemarketing" required />
+      </div>    
+
+          <div class="form-group">
+       <label>Fecha de Ingreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="exp3.fechaING" placeholder="¿Cuándo comenzaste a trabajar aca?" min="1959-12-31" max="2017-01-01" required /> 
+
+       <label>Fecha de Egreso: </label>
+       <input type="datetime" class="input-sm form-control" ng-model="exp3.fechaEGR" placeholder="¿Cuándo terminaste de trabajar aca?" min="1959-12-31" max="2017-01-01" required />
+      </div>  
+
+            <div class="form-group">
+       <label>Posición Desempeñada: </label>
+       <input type="text" class="input-sm form-control" ng-model="exp3.Pos" placeholder="¿Que posición desempeñaste" maxlength="35" data-toggle="tooltip" data-placement="right" title="Ej.: Agente de atención al cliente" required />
+      </div>  
+
+            <div class="form-group">
+    <label Logros obtenidos: </label>
+      <textarea name="exp3.Log" class="input-sm" ng-model="exp3.Log" maxlength="350" required>
+    </textarea>
+    </div> 
+
+               <div class="form-group">
+    <label data-toggle="tooltip" data-placement="right" data-html="true" title="">Tareas realizadas: </label>
+      <textarea name="exp3.Tar" class="input-sm" ng-model="exp3.Tar" maxlength="350" required>
+    </textarea>
+    </div> 
+
+     </li>
+   </ol>
+       </div>
+
+        <!-- Perfil Profesional -->
+      <div class="form-group">
+    <label id="pProfInicia" data-toggle="tooltip" data-placement="right" data-html="true" title="Describete">Perfil Profesional: </label>
+      <textarea name="perfilProfesional" class="input-sm" ng-model="perfilProfesional" maxlength="200" required>
+    </textarea>
+    </div>
+
+    <!-- Objetivo Laboral -->
+    <div class="form-group">
+    <label id="objLabInicia" data-toggle="tooltip" data-placement="top" title="Es conveniente que hables en presente y que comuniques de forma concreta que buscas laboral/profesionalmente" maxlength="200">Objetivo Laboral: </label>
+      <textarea name="objLab" class="input-sm" ng-model="objLab" data-toggle="tooltip" data-placement="top" title="Ej.: Deseo posicionarme/insertarme/desarrollarme/resectorizarme... en el área de..." required>
+    </textarea>
+    </div>
+     </div>
+
+
+		
+
+		<button type="submit" id="aceptar" class="btn btn-default">Aceptar</button>
+
+	</form>
+</div>
+
+<!-- Barra de Herramientas -->
+
+    
+		<div ID="barraHerramientas" class="container-fluid noPrint" align="center">
+      <button id="aFormP1" class="btn btn-default">Anterior 1</button>
+    <button id="aFormP2a" class="btn btn-default">Anterior 2</button>
+        <a href="#" class="btn btn-info btn-lg" id="ocultarForm">
+          <span class="glyphicon glyphicon-collapse-up"></span> Ocultar
+        </a>
+
+
+         <a href="#" class="btn btn-info btn-lg" id="mostrarForm">
+          <span class="glyphicon glyphicon-collapse-down"></span> Mostrar
+        </a>
+
+            <button id="aFormP2b" class="btn btn-default">Siguiente 1</button>
+    <button id="aFormP3" class="btn btn-default">Siguiente 2</button>
+
+    </div>
+
+
+
+      
+
+<!-- Layout -->
+<page size="A4">
+<div id="CV" class="container-fluid">
+	<!-- Encabezado -->
+	<div class="row">
+		<div id="encabezado" class="col-md-12">
+			<img class="left redondeado img-responsive" id="blah" src="#" alt="Foto de perfil" height="150" width="150" />
+			<h1 id="displayNombre"> {{nombre}} {{apellido}} </h1>
+			<h4> {{celular}} / {{fijo}} </h4>
+			<h4> {{email}} </h4>
+			<h4> {{calle}}  {{dirNro}}, {{data.ciudad}}, Buenos Aires, Argentina </h4>
+
+		</div>
+	</div>
+	<!--COLUMNA IZQUIERDA -->
+	<div class="row"> 
+		<div ID="columIzq" class="col-md-8">
+
+      <div id="seccion1A" class="seccion">
+			<h2>Introducción Personal:</h2>
+			<p><b class="lead">Perfil profesional:</b>{{perfilProfesional}}</p>
+			<p><b class="lead">Objetivo laboral:</b>{{objLab}}</p>
+    </div>
+
+      <div id="seccion2A" class="seccion">
+      <h2>Experiencias más Destacadas:</h2>
+			<ul>
+      <li>
+			<h1> {{exp1.NombreOrg}} <small> ({{exp1.IndustriaOrg}})</small> </h1>
+      <h4> ({{exp1.fechaING}} - {{exp1.fechaEGR}}) </h4>
+			<h3> <b> {{exp1.Pos}} </b></h3>
+			<h3> Logros obtenidos: {{exp1.Log}} </h3>
+      <h3> Tareas realizadas: {{exp1.Tar}} </h3>
+    </li>
+    <li>
+      <h1> {{exp2.NombreOrg}} <small> ({{exp2.IndustriaOrg}})</small> </h1>
+      <h4> ({{exp2.fechaING}} - {{exp2.fechaEGR}}) </h4>
+      <h3> <b> {{exp2.Pos}} </b></h3>
+      <h3> Logros obtenidos: {{exp2.Log}} </h3>
+      <h3> Tareas realizadas: {{exp2.Tar}} </h3>
+    </li>
+    <li>
+      <h1> {{exp3.NombreOrg}} <small> ({{exp3.IndustriaOrg}})</small> </h1>
+      <h4> ({{exp3.fechaING}} - {{exp3.fechaEGR}}) </h4>
+      <h3> <b> {{exp3.Pos}} </b></h3>
+      <h3> Logros obtenidos: {{exp3.Log}} </h3>
+      <h3> Tareas realizadas: {{exp3.Tar}} </h3>
+    </li>
+  </div>
+
+
+  </ul>
+		</div>
+	<!-- COLUMNA DERECHA -->
+	<div ID="columDer" class="col-md-4">
+    <div id="seccion1B" class="seccion">
+		<h2><span class="glyphicon glyphicon-education"></span> Formación Academica:</h2>
+		<ul>
+    <li>
+    <h3> <b> {{form1.NombreTitulo}} </b> </h3>
+		<h3> {{form1.NombreInst}} </h3>
+    <h3> <b> {{form1.Materias}}/{{form1.TotalMaterias}} </b> </h3>
+  </li>
+
+      <li>
+    <h3> <b> {{form2.NombreTitulo}} </b> </h3>
+    <h3> {{form2.NombreInst}} </h3>
+    <h3> <b> {{form2.Materias}}/{{form2.TotalMaterias}} </b> </h3>
+  </li>
+
+
+  </ul>
+
+  </div>
+
+  <div id="seccion2B" class="seccion">
+		<h2>Competencias Profesionales:</h2>
+		<h3> Habilidades Blandas </h3>
+		<h3> Idiomas </h3>
+		<h4> {{data.lengua2}}     	             Nivel: {{data.lengua2lvl}} <span id="certiLeng2" class="glyphicon glyphicon-bookmark"></span> </h4>
+		<h4> {{data.lengua3}}     	             Nivel: {{data.lengua3lvl}} <span id="certiLeng3" class="glyphicon glyphicon-bookmark"></span></h4>
+
+		<h3> Conocimientos Duros </h3>
+
+			<h4> Paquete Office    	             Nivel: {{data.officelvl}} <span id="certiOffi" class="glyphicon glyphicon-bookmark"></span> </h4>
+			<h4> Programación    	             Nivel: {{data.programacionlvl}} <span id="certiProg" class="glyphicon glyphicon-bookmark"></span> </h4>
+
+			
+
+</div>
+	</div>
+	</div> 
+		<!-- PIE -->
+	<div class="row">
+		<div id="pie" class="col-md-12">
+			<h4> Edad: {{edad}} años   DNI: {{DNI}}   Nacionalidad: Argentino</h4>
+			<h4> Estado Civil: {{data.estadoCivil}} </h4>
+
+		</div>
+	</div>
+</div>
+</page>
+
+<footer class="noPrint" align="center">
+<a href="http://codepen.io/PatricioJulian/"><i class="fa fa-codepen fa-3x"></i></a>
+<a href="https://ar.linkedin.com/in/patriciogerpe"><i class="fa fa-linkedin-square fa-3x"></i></a>
+<a href="https://www.facebook.com/pgerpemandarine"><i class="fa fa-facebook-square fa-3x"></i></a>
+<p style="text-align:center;"> Autor: Patricio Julian Gerpe </p>
+<p style="text-align:center;"> Versión: Beta 3.2.1 </p>
+<small> El proyecto aún esta en face beta y necesita considerablemente un tiempo prudencial de testing </small>
+</footer>
+
+</body>

@@ -1,0 +1,10 @@
+// AMBLEX CV-APP //
+
+Beta 3.2.1
+
+Patricio J. Gerpe
+
+!! Index dir = Src/contenido/index.html !!
+
+
+El proyecto esta en face beta aún. Necesita mucho testeo. 

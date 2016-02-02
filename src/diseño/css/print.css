@@ -1,0 +1,86 @@
+@media print {
+  
+  body, page[size="A4"] {
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: 0;
+    width:100%;
+    max-height: 1000px;
+  }
+
+  #CV {
+  margin: 0 auto;
+  padding: 0 auto;
+  max-height: 1000px;
+  width: 100%;
+  }
+
+  #seccion1A {
+  min-height: 190px;
+  max-height: 190px;
+  }
+
+   #seccion1B {
+  min-height: 190px;
+  max-height: 270px;
+  }
+
+  .seccion {
+    padding: 0.5em;
+  }
+
+     #columDer h2 {
+  font-size: 1.45em;
+  padding-bottom: 0.45em;
+
+  }
+
+
+
+[data-notify="container"][class*="alert"] {
+opacity: 0;
+}
+
+#columIzq {
+  background-color:white;
+  min-height: 760px;
+  float:left;
+  width:66%;
+  padding:0;
+  margin-left: 0.5em;
+}
+
+#columDer{
+  background-color:white;
+    min-height: 760px;
+    float: right;
+    width:33%;
+    padding:0;
+    margin-right: 0.5em;
+}
+
+#pie {
+  background-color:white;
+  height: 145px;
+  width:100%;
+}
+  .noPrint {
+    display:none;
+  }
+
+  #encabezado {
+  opacity: 0.8;
+  height: 150px;
+  margin-top: 0;
+  padding-top: 0;
+  max-height: 150px;
+  width:100%;
+}
+
+
+
+  .site-description {display:none;}
+.site-title {display:none;}
+
+
+}
