@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html ng-app>
 <!-- AMBLEX CV CREATOR -->
-	<!-- 		Versión Beta 3.2 .1
-			Autor: Patricio J. Gerpe  
-			Ultima Actualización: 02/02/2016
-	-->
+  <!--    Versión Beta 3.2 .1
+      Autor: Patricio J. Gerpe  
+      Ultima Actualización: 02/02/2016
+  -->
 <!-- El proyecto consiste en desarrollar un template de Curriculums Vitae, en donde el usuario registra sus datos profesionales en un form y con dicha información se devuelve rápidamente un Curriculum completamente diseñado diamico, vistoso e interactivo listo para imprimir. -->
 
 <!-- Para dicho desafio utilicé tecnologías como AngularJS, Jquery, Bootstrap y Animate.Css en un diseño de Single Page App-->
@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="../diseño/css/jquery.custom-scrollbar.css">
 
 <!-- UX: Jquery -->
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script class="jsbin" src="../comportamiento/js/jquery-1.11.3.min.js"></script>
+<script class="jsbin" src="../comportamiento/js/jquery-ui.min.js"></script>
 <script src="../comportamiento/js/jquery.custom-scrollbar.js"></script>
 <script src="../comportamiento/js/read.js"></script>
 <script src="../comportamiento/js/comportamiento.js"></script>
@@ -44,10 +44,10 @@
 <body>
 
 <div class="container-fluid noPrint">
-	<!-- Trigger the modal with a button -->
+  <!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span>  Ayuda</button>
 
-	<!-- Modal -->
+  <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -90,15 +90,15 @@ CoinWidgetCom.go({
 
 <!-- Botón de Donanciones -->
 <span style="overflow: hidden; border: 1px solid black; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 4px; padding-left: 0px; font-family: Arial; font-size: 12px; font-weight: bold; background-color: white;">
-	<span style="padding: 4px; padding-left: 8px; background-color: #E98A0A; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: white;">
-		<a data-toggle="tooltip" data-placement="bottom" title="¡Con tu ayuda puedo seguir desarrollando nuevos proyectos y financiar mis estudios!" href="http://www.bitcoin.org/" style="text-decoration: none; color: white;">
-			<span style="-webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-weight: normal; color: white; font-size: 15px; background-color: white; color: #E98A0A; padding: 1px 5px; padding-top: 0px;">&#3647;</span>
-			Dona para estudios
-		</a>
-	</span>
-	<span data-toggle="tooltip" data-placement="right" title="Para donar haz una transacción con tu Billetera Bitcoin a esta dirección, ¡muy pronto también agregaré mercadopago!" style="padding: 5px;">
-		36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo
-	</span>
+  <span style="padding: 4px; padding-left: 8px; background-color: #E98A0A; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: white;">
+    <a data-toggle="tooltip" data-placement="bottom" title="¡Con tu ayuda puedo seguir desarrollando nuevos proyectos y financiar mis estudios!" href="http://www.bitcoin.org/" style="text-decoration: none; color: white;">
+      <span style="-webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-weight: normal; color: white; font-size: 15px; background-color: white; color: #E98A0A; padding: 1px 5px; padding-top: 0px;">&#3647;</span>
+      Dona para estudios
+    </a>
+  </span>
+  <span data-toggle="tooltip" data-placement="right" title="Para donar haz una transacción con tu Billetera Bitcoin a esta dirección, ¡muy pronto también agregaré mercadopago!" style="padding: 5px;">
+    36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo
+  </span>
 </span>
 </div> 
     <div class="noPrint">
@@ -111,83 +111,83 @@ CoinWidgetCom.go({
 
 
 
-	<div class="container-fluid noPrint" id="top" align="center">
-	<h1 style="text-align:center;">AMBLEX CREADOR DE CVS</h1>
+  <div class="container-fluid noPrint" id="top" align="center">
+  <h1 style="text-align:center;">AMBLEX CREADOR DE CVS</h1>
 
 
   <!-- FORMULARIO-->
 
   <!-- Datos Personales-->
-	<form id="formulario" class="form-inline"  data-toggle="validator" role="form" method="get" action="#">
+  <form id="formulario" class="form-inline"  data-toggle="validator" role="form" method="get" action="#">
     <div ID="formP1" class="form-group">
       <h2> Datos Personales </h2>
-		<!-- Color de Fondo-->
-		<label for="bg">Color:</label> 
+    <!-- Color de Fondo-->
+    <label for="bg">Color:</label> 
         <input type="color" class="theme" id="color"/>
-		<!-- Nombre -->
-		<div class="form-group">
-	   <label class="wb-inv" id="nombreInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu nombre!">Tu nombre: </label>
+    <!-- Nombre -->
+    <div class="form-group">
+     <label class="wb-inv" id="nombreInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu nombre!">Tu nombre: </label>
        <input type="text" id="espacioNombre" class="input-sm form-control" ng-model="nombre"  placeholder="¿Cuál es tu nombre?" required />
        </div>
        <!-- Apellido -->
        <div class="form-group">
        <label id="apellidoInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu apellido!">Apellido: </label>
        <input type="text" id="espacioApellido" class="input-sm form-control" ng-model="apellido" placeholder="¿Cuál es tu Apellido?" required />
-   		</div>
+      </div>
        <!-- Foto -->
        <div class="form-group">
        <label for="fotoUrl">Foto de perfil</label><span class="glyphicon glyphicon-open"></span>
-		<input type="file" accept="image/x-png, image/gif, image/jpeg" onchange="readURL(this);" class="form-control" id="fotoUrl" />
-		</div>
+    <input type="file" accept="image/x-png, image/gif, image/jpeg" onchange="readURL(this);" class="form-control" id="fotoUrl" />
+    </div>
        <!-- DNI -->
        <div class="form-group">
        <label id="dniInicia">DNI: </label>
        <input type="number" id="espacioDNI" class="input-sm" ng-model="DNI" placeholder="¿Cuál es tu DNI?" required />
-   		</div>
+      </div>
         <!-- Edad -->
         <div class="form-group">
        <label id="edadInicia" data-toggle="tooltip" data-placement="right">Edad: </label>
        <input type="number" id="espacioEdad" class="input-sm form-control" ng-model="edad" placeholder="¿Cuál es tu edad?"required />
-   		</div>
+      </div>
        <!-- Estado Civil -->
        <div class="form-group">
-       	<label for="estadoCivil"> Estado Civil: </label>
-    	<select class="form-control" name="estadoCivil" ng-model="data.estadoCivil" required>
-      		<option value="Soltero/a">Soltero/a</option>
-      		<option value="Casado/a">Casado/a</option>
-      		<option value="Divorciado/a">Divorciado/a</option>
-      		<option value="Viudo/a">Viudo/a</option>
-    	</select>
-    	</div>
+        <label for="estadoCivil"> Estado Civil: </label>
+      <select class="form-control" name="estadoCivil" ng-model="data.estadoCivil" required>
+          <option value="Soltero/a">Soltero/a</option>
+          <option value="Casado/a">Casado/a</option>
+          <option value="Divorciado/a">Divorciado/a</option>
+          <option value="Viudo/a">Viudo/a</option>
+      </select>
+      </div>
         <!-- Celular -->
-       	<div class="form-group">
-       		<label id="celularInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu nro de Celular!">Celular: </label>
-       		<input type="number" id="espacioCelular" class="input-sm form-control" ng-model="celular" placeholder="¿Cuál es tu nro de Celular?" required />
-   		</div>
+        <div class="form-group">
+          <label id="celularInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu nro de Celular!">Celular: </label>
+          <input type="number" id="espacioCelular" class="input-sm form-control" ng-model="celular" placeholder="¿Cuál es tu nro de Celular?" required />
+      </div>
        <!-- Fijo -->
-       	<div class="form-group">
+        <div class="form-group">
        <label id="fijoInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu nro de telefono fijo!">Telefono: </label>
        <input type="number" id="espacioFijo" class="input-sm form-control" ng-model="fijo" placeholder="¿Cuál es tu nro de telefono?"  />
        </div>
        <!-- Email -->
-       	<div class="form-group">
-       	<i class="fa fa-envelope-o fa-fw"></i>
+        <div class="form-group">
+        <i class="fa fa-envelope-o fa-fw"></i>
        <label id="emailInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu email!">Email: </label>
        <input type="email" id="espacioFijo" class="input-sm form-control" ng-model="email" placeholder="¿Cuál es tu email?" data-error="Porfavor escriba una dirección de email correcta" required />
-   		</div>
+      </div>
         <!-- Dirección -->
         <div class="form-group">
        <label id="direccionInicia" data-toggle="tooltip" data-placement="right">Dirección: </label>
        <input type="text" id="espaciodirCalle" class="input-sm" ng-model="calle" placeholder="¿En qué calle vivis?" required />
        <input type="number" id="espaciodirNro" class="input-sm" ng-model="dirNro" placeholder="¿A qué altura?" required/>
-		<label for="ciudad"> Zona: </label>
-    	<select name="ciudad" ng-model="data.ciudad" required>
-      		<option value="Capital Federal">Capital Federal</option>
-      		<option value="GBA Norte">GBA Norte</option>
-      		<option value="GBA Sur">GBA Sur</option>
-      		<option value="GBA Oeste">GBA Oeste</option>
-    	</select>
-    	</div>
+    <label for="ciudad"> Zona: </label>
+      <select name="ciudad" ng-model="data.ciudad" required>
+          <option value="Capital Federal">Capital Federal</option>
+          <option value="GBA Norte">GBA Norte</option>
+          <option value="GBA Sur">GBA Sur</option>
+          <option value="GBA Oeste">GBA Oeste</option>
+      </select>
+      </div>
 
     
       </div>
@@ -528,17 +528,17 @@ CoinWidgetCom.go({
      </div>
 
 
-		
+    
 
-		<button type="submit" id="aceptar" class="btn btn-default">Aceptar</button>
+    <button type="submit" id="aceptar" class="btn btn-default">Aceptar</button>
 
-	</form>
+  </form>
 </div>
 
 <!-- Barra de Herramientas -->
 
     
-		<div ID="barraHerramientas" class="container-fluid noPrint" align="center">
+    <div ID="barraHerramientas" class="container-fluid noPrint" align="center">
       <button id="aFormP1" class="btn btn-default">Anterior 1</button>
     <button id="aFormP2a" class="btn btn-default">Anterior 2</button>
         <a href="#" class="btn btn-info btn-lg" id="ocultarForm">
@@ -546,9 +546,9 @@ CoinWidgetCom.go({
         </a>
 
 
-         <a href="#" class="btn btn-info btn-lg" id="mostrarForm">
+         <button class="btn btn-info btn-lg" id="mostrarForm">
           <span class="glyphicon glyphicon-collapse-down"></span> Mostrar
-        </a>
+        </button>
 
             <button id="aFormP2b" class="btn btn-default">Siguiente 1</button>
     <button id="aFormP3" class="btn btn-default">Siguiente 2</button>
@@ -562,35 +562,35 @@ CoinWidgetCom.go({
 <!-- Layout -->
 <page size="A4">
 <div id="CV" class="container-fluid">
-	<!-- Encabezado -->
-	<div class="row">
-		<div id="encabezado" class="col-md-12">
-			<img class="left redondeado img-responsive" id="blah" src="#" alt="Foto de perfil" height="150" width="150" />
-			<h1 id="displayNombre"> {{nombre}} {{apellido}} </h1>
-			<h4> {{celular}} / {{fijo}} </h4>
-			<h4> {{email}} </h4>
-			<h4> {{calle}}  {{dirNro}}, {{data.ciudad}}, Buenos Aires, Argentina </h4>
+  <!-- Encabezado -->
+  <div class="row">
+    <div id="encabezado" class="col-md-12">
+      <img class="left redondeado img-responsive" id="blah" src="#" alt="Foto de perfil" height="150" width="150" />
+      <h1 id="displayNombre"> {{nombre}} {{apellido}} </h1>
+      <h4> {{celular}} / {{fijo}} </h4>
+      <h4> {{email}} </h4>
+      <h4> {{calle}}  {{dirNro}}, {{data.ciudad}}, Buenos Aires, Argentina </h4>
 
-		</div>
-	</div>
-	<!--COLUMNA IZQUIERDA -->
-	<div class="row"> 
-		<div ID="columIzq" class="col-md-8">
+    </div>
+  </div>
+  <!--COLUMNA IZQUIERDA -->
+  <div class="row"> 
+    <div ID="columIzq" class="col-md-8">
 
       <div id="seccion1A" class="seccion">
-			<h2>Introducción Personal:</h2>
-			<p><b class="lead">Perfil profesional:</b>{{perfilProfesional}}</p>
-			<p><b class="lead">Objetivo laboral:</b>{{objLab}}</p>
+      <h2>Introducción Personal:</h2>
+      <p><b class="lead">Perfil profesional:</b>{{perfilProfesional}}</p>
+      <p><b class="lead">Objetivo laboral:</b>{{objLab}}</p>
     </div>
 
       <div id="seccion2A" class="seccion">
       <h2>Experiencias más Destacadas:</h2>
-			<ul>
+      <ul>
       <li>
-			<h1> {{exp1.NombreOrg}} <small> ({{exp1.IndustriaOrg}})</small> </h1>
+      <h1> {{exp1.NombreOrg}} <small> ({{exp1.IndustriaOrg}})</small> </h1>
       <h4> ({{exp1.fechaING}} - {{exp1.fechaEGR}}) </h4>
-			<h3> <b> {{exp1.Pos}} </b></h3>
-			<h3> Logros obtenidos: {{exp1.Log}} </h3>
+      <h3> <b> {{exp1.Pos}} </b></h3>
+      <h3> Logros obtenidos: {{exp1.Log}} </h3>
       <h3> Tareas realizadas: {{exp1.Tar}} </h3>
     </li>
     <li>
@@ -611,15 +611,15 @@ CoinWidgetCom.go({
 
 
   </ul>
-		</div>
-	<!-- COLUMNA DERECHA -->
-	<div ID="columDer" class="col-md-4">
+    </div>
+  <!-- COLUMNA DERECHA -->
+  <div ID="columDer" class="col-md-4">
     <div id="seccion1B" class="seccion">
-		<h2><span class="glyphicon glyphicon-education"></span> Formación Academica:</h2>
-		<ul>
+    <h2><span class="glyphicon glyphicon-education"></span> Formación Academica:</h2>
+    <ul>
     <li>
     <h3> <b> {{form1.NombreTitulo}} </b> </h3>
-		<h3> {{form1.NombreInst}} </h3>
+    <h3> {{form1.NombreInst}} </h3>
     <h3> <b> {{form1.Materias}}/{{form1.TotalMaterias}} </b> </h3>
   </li>
 
@@ -635,30 +635,30 @@ CoinWidgetCom.go({
   </div>
 
   <div id="seccion2B" class="seccion">
-		<h2>Competencias Profesionales:</h2>
-		<h3> Habilidades Blandas </h3>
-		<h3> Idiomas </h3>
-		<h4> {{data.lengua2}}     	             Nivel: {{data.lengua2lvl}} <span id="certiLeng2" class="glyphicon glyphicon-bookmark"></span> </h4>
-		<h4> {{data.lengua3}}     	             Nivel: {{data.lengua3lvl}} <span id="certiLeng3" class="glyphicon glyphicon-bookmark"></span></h4>
+    <h2>Competencias Profesionales:</h2>
+    <h3> Habilidades Blandas </h3>
+    <h3> Idiomas </h3>
+    <h4> {{data.lengua2}}                    Nivel: {{data.lengua2lvl}} <span id="certiLeng2" class="glyphicon glyphicon-bookmark"></span> </h4>
+    <h4> {{data.lengua3}}                    Nivel: {{data.lengua3lvl}} <span id="certiLeng3" class="glyphicon glyphicon-bookmark"></span></h4>
 
-		<h3> Conocimientos Duros </h3>
+    <h3> Conocimientos Duros </h3>
 
-			<h4> Paquete Office    	             Nivel: {{data.officelvl}} <span id="certiOffi" class="glyphicon glyphicon-bookmark"></span> </h4>
-			<h4> Programación    	             Nivel: {{data.programacionlvl}} <span id="certiProg" class="glyphicon glyphicon-bookmark"></span> </h4>
+      <h4> Paquete Office                  Nivel: {{data.officelvl}} <span id="certiOffi" class="glyphicon glyphicon-bookmark"></span> </h4>
+      <h4> Programación                  Nivel: {{data.programacionlvl}} <span id="certiProg" class="glyphicon glyphicon-bookmark"></span> </h4>
 
-			
+      
 
 </div>
-	</div>
-	</div> 
-		<!-- PIE -->
-	<div class="row">
-		<div id="pie" class="col-md-12">
-			<h4> Edad: {{edad}} años   DNI: {{DNI}}   Nacionalidad: Argentino</h4>
-			<h4> Estado Civil: {{data.estadoCivil}} </h4>
+  </div>
+  </div> 
+    <!-- PIE -->
+  <div class="row">
+    <div id="pie" class="col-md-12">
+      <h4> Edad: {{edad}} años   DNI: {{DNI}}   Nacionalidad: Argentino</h4>
+      <h4> Estado Civil: {{data.estadoCivil}} </h4>
 
-		</div>
-	</div>
+    </div>
+  </div>
 </div>
 </page>
 
