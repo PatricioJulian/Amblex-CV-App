@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app>
 <!-- AMBLEX CV CREATOR -->
-  <!--    Versión Beta 3.3
+  <!--    Versión Beta 3.3.2
       Autor: Patricio J. Gerpe  
       Ultima Actualización: 03/02/2016
   -->
@@ -10,7 +10,7 @@
 <!-- Para dicho desafio utilicé tecnologías como AngularJS, Jquery, Bootstrap y Animate.Css en un diseño de Single Page App-->
 <head>
 <meta charset="UTF-8">
-<title>Curriculum Vitae {{nombre}} {{apellido}}</title>
+<title>Amblex Cv-App 3.3.2</title>
 <!-- Diseño: CSS + Jquery -->
 <link href="../diseño/css/bootstrap.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="../diseño/css/animate.css">
@@ -119,7 +119,7 @@ CoinWidgetCom.go({
 
   <!-- Datos Personales-->
   <form id="formulario" class="form-inline"  data-toggle="validator" role="form" method="get" action="#">
-    <div ID="formP1" class="form-group">
+    <div ID="formP1" class="form-group formPag">
       <h2> Datos Personales </h2>
     <!-- Color de Fondo-->
     <label for="bg">Color:</label> 
@@ -192,7 +192,7 @@ CoinWidgetCom.go({
     
       </div>
 
-    <div ID="formP2" class="form-group">
+    <div ID="formP2" class="form-group formPag">
       <h2> Marco Educacional </h2>
     <!--Marco Educacional -->
 
@@ -386,7 +386,7 @@ CoinWidgetCom.go({
 
     </div>
 
-      <div ID="formP3" class="form-group">
+      <div ID="formP3" class="form-group formPag">
         <h2> Marco Laboral </h2>
     <!--Marco Ocupacional -->
 
@@ -525,12 +525,13 @@ CoinWidgetCom.go({
       <textarea name="objLab" class="input-sm" ng-model="objLab" data-toggle="tooltip" data-placement="top" title="Ej.: Deseo posicionarme/insertarme/desarrollarme/resectorizarme... en el área de..." required>
     </textarea>
     </div>
+    <button type="submit" id="aceptar" class="btn btn-default">Aceptar</button>
      </div>
 
 
     
 
-    <button type="submit" id="aceptar" class="btn btn-default">Aceptar</button>
+    
 
   </form>
 </div>
@@ -663,12 +664,12 @@ CoinWidgetCom.go({
 </page>
 
 <footer class="noPrint" align="center">
-<a href="http://codepen.io/PatricioJulian/"><i class="fa fa-codepen fa-3x"></i></a>
-<a href="https://github.com/PatricioJulian"><i class="fa fa-github-square fa-3x"></i></a>
-<a href="https://ar.linkedin.com/in/patriciogerpe"><i class="fa fa-linkedin-square fa-3x"></i></a>
-<a href="https://www.facebook.com/pgerpemandarine"><i class="fa fa-facebook-square fa-3x"></i></a>
+<a href="http://codepen.io/PatricioJulian/" target="_blank"><i class="fa fa-codepen fa-3x"></i></a>
+<a href="https://github.com/PatricioJulian" target="_blank"><i class="fa fa-github-square fa-3x"></i></a>
+<a href="https://ar.linkedin.com/in/patriciogerpe" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
+<a href="https://www.facebook.com/pgerpemandarine" target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a>
 <p style="text-align:center;"> Autor: Patricio Julian Gerpe </p>
-<p style="text-align:center;"> Versión: Beta 3.3 </p>
+<p style="text-align:center;"> Versión: Beta 3.3.2 </p>
 <small> El proyecto aún esta en face beta y necesita considerablemente un tiempo prudencial de testing </small>
 </footer>
 
