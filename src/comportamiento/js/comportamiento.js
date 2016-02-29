@@ -80,13 +80,13 @@ $(document).ready(function(){
 
 // Toggler 
   $("#ocultarForm").click(function(){
-  		$("#formulario").slideToggle(1000);
+  		$(".cierre").slideToggle(1000);
   		$("#mostrarForm").show();
   		$("#ocultarForm").hide();
 	});
 
     $("#mostrarForm").click(function(){
-  		$("#formulario").slideToggle(1000);
+  		$(".cierre").slideToggle(1000);
   		$("#mostrarForm").hide();
   		$("#ocultarForm").show();
 
@@ -96,6 +96,7 @@ $(document).ready(function(){
 // Modo Vista previa - Modo Formulario
 	  $("#ocultarCV").click(function(){
   		$("#CV").fadeToggle(500);
+  		$("page").fadeToggle(500);
   		$("#formulario").delay(500).toggleClass("form-horizontal");
   		$("#formulario").delay(500).toggleClass("form-inline");
   			$.notify({

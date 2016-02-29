@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app ng-init="version='Beta 3.4'">
 <!-- AMBLEX CV CREATOR -->
-  <!--    Versión Beta 3.3.2
+  <!--
       Autor: Patricio J. Gerpe  
-      Ultima Actualización: 03/02/2016
+      Ultima Actualización: 29/02/2016
   -->
 <!-- El proyecto consiste en desarrollar un template de Curriculums Vitae, en donde el usuario registra sus datos profesionales en un form y con dicha información se devuelve rápidamente un Curriculum completamente diseñado diamico, vistoso e interactivo listo para imprimir. -->
 
 <!-- Para dicho desafio utilicé tecnologías como AngularJS, Jquery, Bootstrap y Animate.Css en un diseño de Single Page App-->
 <head>
 <meta charset="UTF-8">
-<title>Amblex Cv-App 3.3.2</title>
+<title>Amblex Cv-App {{version}}</title>
 <!-- Diseño: CSS + Jquery -->
 <link href="../diseño/css/bootstrap.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="../diseño/css/animate.css">
@@ -96,10 +96,11 @@ CoinWidgetCom.go({
       Dona para estudios
     </a>
   </span>
-  <span data-toggle="tooltip" data-placement="right" title="Para donar haz una transacción con tu Billetera Bitcoin a esta dirección, ¡muy pronto también agregaré mercadopago!" style="padding: 5px;">
+  <span data-toggle="tooltip" data-placement="bottom" title="Para donar haz una transacción con tu Billetera Bitcoin a esta dirección" style="padding: 5px;">
     36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo
   </span>
 </span>
+
 </div> 
     <div class="noPrint">
            <b> Vista previa: </b>
@@ -107,12 +108,19 @@ CoinWidgetCom.go({
     <button  id="ocultarCV" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-close"></span>Off</button>
     <button  id="mostrarCV" class="btn btn-primary active btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-open"></span>On</button>
   </div>
+
+
 </div>
 
 
 
+
   <div class="container-fluid noPrint" id="top" align="center">
-  <h1 style="text-align:center;">AMBLEX CREADOR DE CVS</h1>
+ <img src="img/amblexLogo.png" class="img-responsive" id="logo"></img>
+  </div>
+
+  <div class="container-fluid noPrint" id="top" align="center" data-spy="affix" data-offset-top="20">
+
 
 
   <!-- FORMULARIO-->
@@ -121,6 +129,7 @@ CoinWidgetCom.go({
   <form id="formulario" class="form-inline"  data-toggle="validator" role="form" method="get" action="#">
     <div ID="formP1" class="form-group formPag">
       <h2> Datos Personales </h2>
+      <div class="cierre">
     <!-- Color de Fondo-->
     <label for="bg">Color:</label> 
         <input type="color" class="theme" id="color"/>
@@ -191,10 +200,11 @@ CoinWidgetCom.go({
 
     
       </div>
+    </div>
 
     <div ID="formP2" class="form-group formPag">
-      <h2> Marco Educacional </h2>
-    <!--Marco Educacional -->
+      <h2> Marco Educacional y Competencias Profesionales </h2>
+    <!--Marco Educacional & Competencias Profesionales-->
 
     <div class="form-group">
     <ul>
@@ -332,6 +342,334 @@ CoinWidgetCom.go({
       </label>
 
       </div>
+
+        <!--Habilidades Blandas -->
+
+       <!-- Soft Skill 1 -->
+       <div class="form-group">
+        <label for="softskill1"> Habilidad blanda que más te define: </label>
+      <select class="form-control" name="softskill1" ng-model="data.softskill1" required>
+          <option value="Etica">Etica</option>
+          <option value="Prudencia">Prudencia</option>
+          <option value="Justicia">Justicia</option>
+          <option value="Fortaleza">Fortaleza</option>
+          <option value="Orientación al cliente">Orientación al cliente</option>
+          <option value="Orientación a resultados">Orientación a resultados</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Sencillez">Sencillez</option>
+          <option value="Adaptabilidad al cambio">Adaptabilidad al cambio</option>
+          <option value="Temple">Temple</option>
+          <option value="Perseverancia">Perseverancia</option>
+          <option value="Integridad">Integridad</option>
+          <option value="Innovación">Innovación</option>
+          <option value="Iniciativa">Iniciativa</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Emponderamiento">Emponderamiento</option>
+          <option value="Autocontrol">Autocontrol</option>
+          <option value="Desarrollo de las personas">Desarrollo de las personas</option>
+          <option value="Conciencia Organizacional">Conciencia Organizacional</option>
+          <option value="Desarrollo del equipo">Desarrollo del equipo</option>
+          <option value="Modalidades de contacto">Modalidades de contacto</option>
+          <option value="Habilidades mediaticas">Habilidades mediaticas</option>
+          <option value="Liderazgo">Liderazgo</option>
+          <option value="Liderazgo para el cambio">Liderazgo para el cambio</option>
+          <option value="Pensamiento estratégico">Pensamiento estratégico</option>
+          <option value="Dinamismo Energia">Dinamismo Energia</option>
+          <option value="Cosmopolitalismo">Cosmopolitalismo</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Colaboración">Colaboración</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Franqueza">Franqueza</option>
+          <option value="Habilidad analitica">Habilidad analitica</option>
+          <option value="Autonomia">Autonomia</option>
+          <option value="Compromiso">Compromiso</option>
+          <option value="Productividad">Productividad</option>
+          <option value="Orientación al cliente interno y externo">Orientación al cliente interno y externo</option>
+          <option value="Profundidad en el conocimiento de los productos">Profundidad en el conocimiento de los productos"</option>
+          <option value="Negociación">Negociación</option>
+          <option value="Habilidades comunicacionales">Habilidades comunicacionales</option>
+          <option value="Facilidad para el aprendizaje continuo">Facilidad para el aprendizaje continuo</option>
+          <option value="Credibilidad técnica">Credibilidad técnica</option>
+          <option value="Presentación de soluciones comerciales">Presentación de soluciones comerciales</option>
+          <option value="Resolución de problemas comerciales">Resolución de problemas comerciales</option>
+          <option value="Capacidad de planificación y organización">Capacidad de planificación y organización</option>
+          <option value="Disciplina personal">Disciplina personal</option>
+          <option value="Conocimiento del negocio y la industria">Conocimiento del negocio y la industria</option>
+          <option value="Construcción de relaciones de negocios">Construcción de relaciones de negocios</option>
+          <option value="Manejo de relaciones de negocios">Manejo de relaciones de negocios</option>
+          <option value="Búsqueda de información">Búsqueda de información</option>
+          <option value="Responsabilidad">Responsabilidad</option>
+          <option value="Autoconfianza">Confianza en uno mismo</option>
+          <option value="Impacto e influencia">Impacto e influencia</option>
+          <option value="Desarrollo de profesionales inteligentes">Desarrollo de profesionales inteligentes</option>
+          <option value="Desarrollo de redes flexibles">Desarrollo de redes flexibles</option>
+          <option value="Fidelización del cliente">Fidelización del cliente</option>
+          <option value="Gerenciamiento">Gerenciamiento</option>
+          <option value="Coaching">Coaching</option>
+          <option value="Oratoria">Oratoria</option>
+      </select>
+      </div>
+
+      <!-- Soft Skill 2 -->
+       <div class="form-group">
+        <label for="softskill2"> En 2do lugar habilidad blanda que te caracterice: </label>
+      <select class="form-control" name="softskill2" ng-model="data.softskill2" required>
+          <option value="Etica">Etica</option>
+          <option value="Prudencia">Prudencia</option>
+          <option value="Justicia">Justicia</option>
+          <option value="Fortaleza">Fortaleza</option>
+          <option value="Orientación al cliente">Orientación al cliente</option>
+          <option value="Orientación a resultados">Orientación a resultados</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Sencillez">Sencillez</option>
+          <option value="Adaptabilidad al cambio">Adaptabilidad al cambio</option>
+          <option value="Temple">Temple</option>
+          <option value="Perseverancia">Perseverancia</option>
+          <option value="Integridad">Integridad</option>
+          <option value="Innovación">Innovación</option>
+          <option value="Iniciativa">Iniciativa</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Emponderamiento">Emponderamiento</option>
+          <option value="Autocontrol">Autocontrol</option>
+          <option value="Desarrollo de las personas">Desarrollo de las personas</option>
+          <option value="Conciencia Organizacional">Conciencia Organizacional</option>
+          <option value="Desarrollo del equipo">Desarrollo del equipo</option>
+          <option value="Modalidades de contacto">Modalidades de contacto</option>
+          <option value="Habilidades mediaticas">Habilidades mediaticas</option>
+          <option value="Liderazgo">Liderazgo</option>
+          <option value="Liderazgo para el cambio">Liderazgo para el cambio</option>
+          <option value="Pensamiento estratégico">Pensamiento estratégico</option>
+          <option value="Dinamismo Energia">Dinamismo Energia</option>
+          <option value="Cosmopolitalismo">Cosmopolitalismo</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Colaboración">Colaboración</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Franqueza">Franqueza</option>
+          <option value="Habilidad analitica">Habilidad analitica</option>
+          <option value="Autonomia">Autonomia</option>
+          <option value="Compromiso">Compromiso</option>
+          <option value="Productividad">Productividad</option>
+          <option value="Orientación al cliente interno y externo">Orientación al cliente interno y externo</option>
+          <option value="Profundidad en el conocimiento de los productos">Profundidad en el conocimiento de los productos"</option>
+          <option value="Negociación">Negociación</option>
+          <option value="Habilidades comunicacionales">Habilidades comunicacionales</option>
+          <option value="Facilidad para el aprendizaje continuo">Facilidad para el aprendizaje continuo</option>
+          <option value="Credibilidad técnica">Credibilidad técnica</option>
+          <option value="Presentación de soluciones comerciales">Presentación de soluciones comerciales</option>
+          <option value="Resolución de problemas comerciales">Resolución de problemas comerciales</option>
+          <option value="Capacidad de planificación y organización">Capacidad de planificación y organización</option>
+          <option value="Disciplina personal">Disciplina personal</option>
+          <option value="Conocimiento del negocio y la industria">Conocimiento del negocio y la industria</option>
+          <option value="Construcción de relaciones de negocios">Construcción de relaciones de negocios</option>
+          <option value="Manejo de relaciones de negocios">Manejo de relaciones de negocios</option>
+          <option value="Búsqueda de información">Búsqueda de información</option>
+          <option value="Responsabilidad">Responsabilidad</option>
+          <option value="Autoconfianza">Confianza en uno mismo</option>
+          <option value="Impacto e influencia">Impacto e influencia</option>
+          <option value="Desarrollo de profesionales inteligentes">Desarrollo de profesionales inteligentes</option>
+          <option value="Desarrollo de redes flexibles">Desarrollo de redes flexibles</option>
+          <option value="Fidelización del cliente">Fidelización del cliente</option>
+          <option value="Gerenciamiento">Gerenciamiento</option>
+          <option value="Coaching">Coaching</option>
+          <option value="Oratoria">Oratoria</option>
+      </select>
+      </div>
+
+      <!-- Soft Skill 3 -->
+       <div class="form-group">
+        <label for="softskill3"> Habilidad Blanda 3: </label>
+      <select class="form-control" name="softskill3" ng-model="data.softskill3" required>
+          <option value="Etica">Etica</option>
+          <option value="Prudencia">Prudencia</option>
+          <option value="Justicia">Justicia</option>
+          <option value="Fortaleza">Fortaleza</option>
+          <option value="Orientación al cliente">Orientación al cliente</option>
+          <option value="Orientación a resultados">Orientación a resultados</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Sencillez">Sencillez</option>
+          <option value="Adaptabilidad al cambio">Adaptabilidad al cambio</option>
+          <option value="Temple">Temple</option>
+          <option value="Perseverancia">Perseverancia</option>
+          <option value="Integridad">Integridad</option>
+          <option value="Innovación">Innovación</option>
+          <option value="Iniciativa">Iniciativa</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Emponderamiento">Emponderamiento</option>
+          <option value="Autocontrol">Autocontrol</option>
+          <option value="Desarrollo de las personas">Desarrollo de las personas</option>
+          <option value="Conciencia Organizacional">Conciencia Organizacional</option>
+          <option value="Desarrollo del equipo">Desarrollo del equipo</option>
+          <option value="Modalidades de contacto">Modalidades de contacto</option>
+          <option value="Habilidades mediaticas">Habilidades mediaticas</option>
+          <option value="Liderazgo">Liderazgo</option>
+          <option value="Liderazgo para el cambio">Liderazgo para el cambio</option>
+          <option value="Pensamiento estratégico">Pensamiento estratégico</option>
+          <option value="Dinamismo Energia">Dinamismo Energia</option>
+          <option value="Cosmopolitalismo">Cosmopolitalismo</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Colaboración">Colaboración</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Franqueza">Franqueza</option>
+          <option value="Habilidad analitica">Habilidad analitica</option>
+          <option value="Autonomia">Autonomia</option>
+          <option value="Compromiso">Compromiso</option>
+          <option value="Productividad">Productividad</option>
+          <option value="Orientación al cliente interno y externo">Orientación al cliente interno y externo</option>
+          <option value="Profundidad en el conocimiento de los productos">Profundidad en el conocimiento de los productos"</option>
+          <option value="Negociación">Negociación</option>
+          <option value="Habilidades comunicacionales">Habilidades comunicacionales</option>
+          <option value="Facilidad para el aprendizaje continuo">Facilidad para el aprendizaje continuo</option>
+          <option value="Credibilidad técnica">Credibilidad técnica</option>
+          <option value="Presentación de soluciones comerciales">Presentación de soluciones comerciales</option>
+          <option value="Resolución de problemas comerciales">Resolución de problemas comerciales</option>
+          <option value="Capacidad de planificación y organización">Capacidad de planificación y organización</option>
+          <option value="Disciplina personal">Disciplina personal</option>
+          <option value="Conocimiento del negocio y la industria">Conocimiento del negocio y la industria</option>
+          <option value="Construcción de relaciones de negocios">Construcción de relaciones de negocios</option>
+          <option value="Manejo de relaciones de negocios">Manejo de relaciones de negocios</option>
+          <option value="Búsqueda de información">Búsqueda de información</option>
+          <option value="Responsabilidad">Responsabilidad</option>
+          <option value="Autoconfianza">Confianza en uno mismo</option>
+          <option value="Impacto e influencia">Impacto e influencia</option>
+          <option value="Desarrollo de profesionales inteligentes">Desarrollo de profesionales inteligentes</option>
+          <option value="Desarrollo de redes flexibles">Desarrollo de redes flexibles</option>
+          <option value="Fidelización del cliente">Fidelización del cliente</option>
+          <option value="Gerenciamiento">Gerenciamiento</option>
+          <option value="Coaching">Coaching</option>
+          <option value="Oratoria">Oratoria</option>
+      </select>
+      </div>
+
+      <!-- Soft Skill 4 -->
+       <div class="form-group">
+        <label for="softskill4"> Habilidad Blanda 4: </label>
+      <select class="form-control" name="softskill4" ng-model="data.softskill4" required>
+          <option value="Etica">Etica</option>
+          <option value="Prudencia">Prudencia</option>
+          <option value="Justicia">Justicia</option>
+          <option value="Fortaleza">Fortaleza</option>
+          <option value="Orientación al cliente">Orientación al cliente</option>
+          <option value="Orientación a resultados">Orientación a resultados</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Sencillez">Sencillez</option>
+          <option value="Adaptabilidad al cambio">Adaptabilidad al cambio</option>
+          <option value="Temple">Temple</option>
+          <option value="Perseverancia">Perseverancia</option>
+          <option value="Integridad">Integridad</option>
+          <option value="Innovación">Innovación</option>
+          <option value="Iniciativa">Iniciativa</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Emponderamiento">Emponderamiento</option>
+          <option value="Autocontrol">Autocontrol</option>
+          <option value="Desarrollo de las personas">Desarrollo de las personas</option>
+          <option value="Conciencia Organizacional">Conciencia Organizacional</option>
+          <option value="Desarrollo del equipo">Desarrollo del equipo</option>
+          <option value="Modalidades de contacto">Modalidades de contacto</option>
+          <option value="Habilidades mediaticas">Habilidades mediaticas</option>
+          <option value="Liderazgo">Liderazgo</option>
+          <option value="Liderazgo para el cambio">Liderazgo para el cambio</option>
+          <option value="Pensamiento estratégico">Pensamiento estratégico</option>
+          <option value="Dinamismo Energia">Dinamismo Energia</option>
+          <option value="Cosmopolitalismo">Cosmopolitalismo</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Colaboración">Colaboración</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Franqueza">Franqueza</option>
+          <option value="Habilidad analitica">Habilidad analitica</option>
+          <option value="Autonomia">Autonomia</option>
+          <option value="Compromiso">Compromiso</option>
+          <option value="Productividad">Productividad</option>
+          <option value="Orientación al cliente interno y externo">Orientación al cliente interno y externo</option>
+          <option value="Profundidad en el conocimiento de los productos">Profundidad en el conocimiento de los productos"</option>
+          <option value="Negociación">Negociación</option>
+          <option value="Habilidades comunicacionales">Habilidades comunicacionales</option>
+          <option value="Facilidad para el aprendizaje continuo">Facilidad para el aprendizaje continuo</option>
+          <option value="Credibilidad técnica">Credibilidad técnica</option>
+          <option value="Presentación de soluciones comerciales">Presentación de soluciones comerciales</option>
+          <option value="Resolución de problemas comerciales">Resolución de problemas comerciales</option>
+          <option value="Capacidad de planificación y organización">Capacidad de planificación y organización</option>
+          <option value="Disciplina personal">Disciplina personal</option>
+          <option value="Conocimiento del negocio y la industria">Conocimiento del negocio y la industria</option>
+          <option value="Construcción de relaciones de negocios">Construcción de relaciones de negocios</option>
+          <option value="Manejo de relaciones de negocios">Manejo de relaciones de negocios</option>
+          <option value="Búsqueda de información">Búsqueda de información</option>
+          <option value="Responsabilidad">Responsabilidad</option>
+          <option value="Autoconfianza">Confianza en uno mismo</option>
+          <option value="Impacto e influencia">Impacto e influencia</option>
+          <option value="Desarrollo de profesionales inteligentes">Desarrollo de profesionales inteligentes</option>
+          <option value="Desarrollo de redes flexibles">Desarrollo de redes flexibles</option>
+          <option value="Fidelización del cliente">Fidelización del cliente</option>
+          <option value="Gerenciamiento">Gerenciamiento</option>
+          <option value="Coaching">Coaching</option>
+          <option value="Oratoria">Oratoria</option>
+      </select>
+      </div>
+
+<!-- Soft Skill 4 -->
+       <div class="form-group">
+        <label for="softskill5"> Habilidad Blanda 5: </label>
+      <select class="form-control" name="softskill5" ng-model="data.softskill5" required>
+          <option value="Etica">Etica</option>
+          <option value="Prudencia">Prudencia</option>
+          <option value="Justicia">Justicia</option>
+          <option value="Fortaleza">Fortaleza</option>
+          <option value="Orientación al cliente">Orientación al cliente</option>
+          <option value="Orientación a resultados">Orientación a resultados</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Sencillez">Sencillez</option>
+          <option value="Adaptabilidad al cambio">Adaptabilidad al cambio</option>
+          <option value="Temple">Temple</option>
+          <option value="Perseverancia">Perseverancia</option>
+          <option value="Integridad">Integridad</option>
+          <option value="Innovación">Innovación</option>
+          <option value="Iniciativa">Iniciativa</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Emponderamiento">Emponderamiento</option>
+          <option value="Autocontrol">Autocontrol</option>
+          <option value="Desarrollo de las personas">Desarrollo de las personas</option>
+          <option value="Conciencia Organizacional">Conciencia Organizacional</option>
+          <option value="Desarrollo del equipo">Desarrollo del equipo</option>
+          <option value="Modalidades de contacto">Modalidades de contacto</option>
+          <option value="Habilidades mediaticas">Habilidades mediaticas</option>
+          <option value="Liderazgo">Liderazgo</option>
+          <option value="Liderazgo para el cambio">Liderazgo para el cambio</option>
+          <option value="Pensamiento estratégico">Pensamiento estratégico</option>
+          <option value="Dinamismo Energia">Dinamismo Energia</option>
+          <option value="Cosmopolitalismo">Cosmopolitalismo</option>
+          <option value="Flexibilidad">Flexibilidad</option>
+          <option value="Colaboración">Colaboración</option>
+          <option value="Calidad de trabajo">Calidad de trabajo</option>
+          <option value="Franqueza">Franqueza</option>
+          <option value="Habilidad analitica">Habilidad analitica</option>
+          <option value="Autonomia">Autonomia</option>
+          <option value="Compromiso">Compromiso</option>
+          <option value="Productividad">Productividad</option>
+          <option value="Orientación al cliente interno y externo">Orientación al cliente interno y externo</option>
+          <option value="Profundidad en el conocimiento de los productos">Profundidad en el conocimiento de los productos"</option>
+          <option value="Negociación">Negociación</option>
+          <option value="Habilidades comunicacionales">Habilidades comunicacionales</option>
+          <option value="Facilidad para el aprendizaje continuo">Facilidad para el aprendizaje continuo</option>
+          <option value="Credibilidad técnica">Credibilidad técnica</option>
+          <option value="Presentación de soluciones comerciales">Presentación de soluciones comerciales</option>
+          <option value="Resolución de problemas comerciales">Resolución de problemas comerciales</option>
+          <option value="Capacidad de planificación y organización">Capacidad de planificación y organización</option>
+          <option value="Disciplina personal">Disciplina personal</option>
+          <option value="Conocimiento del negocio y la industria">Conocimiento del negocio y la industria</option>
+          <option value="Construcción de relaciones de negocios">Construcción de relaciones de negocios</option>
+          <option value="Manejo de relaciones de negocios">Manejo de relaciones de negocios</option>
+          <option value="Búsqueda de información">Búsqueda de información</option>
+          <option value="Responsabilidad">Responsabilidad</option>
+          <option value="Autoconfianza">Confianza en uno mismo</option>
+          <option value="Impacto e influencia">Impacto e influencia</option>
+          <option value="Desarrollo de profesionales inteligentes">Desarrollo de profesionales inteligentes</option>
+          <option value="Desarrollo de redes flexibles">Desarrollo de redes flexibles</option>
+          <option value="Fidelización del cliente">Fidelización del cliente</option>
+          <option value="Gerenciamiento">Gerenciamiento</option>
+          <option value="Coaching">Coaching</option>
+          <option value="Oratoria">Oratoria</option>
+      </select>
+      </div>
+
 
       <!--Conocimientos Duros -->
 
@@ -534,11 +872,13 @@ CoinWidgetCom.go({
     
 
   </form>
-</div>
+
 
 <!-- Barra de Herramientas -->
 
-    
+
+
+ 
     <div ID="barraHerramientas" class="container-fluid noPrint" align="center">
       <button id="aFormP1" class="btn btn-default">Anterior 1</button>
     <button id="aFormP2a" class="btn btn-default">Anterior 2</button>
@@ -554,6 +894,7 @@ CoinWidgetCom.go({
             <button id="aFormP2b" class="btn btn-default">Siguiente 1</button>
     <button id="aFormP3" class="btn btn-default">Siguiente 2</button>
 
+    </div>
     </div>
 
 
@@ -638,6 +979,13 @@ CoinWidgetCom.go({
   <div id="seccion2B" class="seccion">
     <h2>Competencias Profesionales:</h2>
     <h3> Habilidades Blandas </h3>
+      <ul>
+        <li>{{data.softskill1}}</li>
+        <li>{{data.softskill2}}</li>
+        <li>{{data.softskill3}}</li>
+        <li>{{data.softskill4}}</li>
+        <li>{{data.softskill5}}</li>
+      </ul>
     <h3> Idiomas </h3>
     <h4> {{data.lengua2}}                    Nivel: {{data.lengua2lvl}} <span id="certiLeng2" class="glyphicon glyphicon-bookmark"></span> </h4>
     <h4> {{data.lengua3}}                    Nivel: {{data.lengua3lvl}} <span id="certiLeng3" class="glyphicon glyphicon-bookmark"></span></h4>
@@ -669,8 +1017,15 @@ CoinWidgetCom.go({
 <a href="https://ar.linkedin.com/in/patriciogerpe" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
 <a href="https://www.facebook.com/pgerpemandarine" target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a>
 <p style="text-align:center;"> Autor: Patricio Julian Gerpe </p>
-<p style="text-align:center;"> Versión: Beta 3.3.2 </p>
-<small> El proyecto aún esta en face beta y necesita considerablemente un tiempo prudencial de testing </small>
+<p style="text-align:center;"> Versión: {{version}} </p>
+
+<h6> El proyecto aún esta en face beta y necesita considerablemente un tiempo prudencial de testing </h6>
+
+<a mp-mode="dftl" href="https://www.mercadopago.com/mla/checkout/start?pref_id=128345783-b60e3354-031f-4bab-950c-43857b508dfc" name="MP-payButton" class='blue-ar-l-rn-arall' data-toggle="tooltip" data-placement="right" title="¡Ahora incorporé MercadoPago!">Donar</a>
+<script type="text/javascript">
+(function(){function $MPBR_load(){window.$MPBR_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = ("https:"==document.location.protocol?"https://www.mercadopago.com/org-img/jsapi/mptools/buttons/":"http://mp-tools.mlstatic.com/buttons/")+"render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPBR_loaded = true;})();}window.$MPBR_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPBR_load) : window.addEventListener('load', $MPBR_load, false)) : null;})();
+</script>
+
 </footer>
 
 </body>

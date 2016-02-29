@@ -17,13 +17,38 @@ background: -webkit-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); 
 background: linear-gradient(to bottom,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
 
+position: relative; 
+
 }
+
+#top h1 {
+	background-color: white;
+	margin: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#formulario {
+	margin:0;
+}
+
 
 .formPag {
 	background-color: #ececec;
 	border: 5px solid #dcdcdc;
-	border-radius: 30px;
+	border-radius: 25px;
 	box-shadow: 10px 10px gray;
+	min-width: 25px;
+
+}
+
+.formPag h2 {
+	margin-top: 0;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 30px;
+
 
 }
 
@@ -149,4 +174,24 @@ page[size="A4"] {
   margin-bottom: 0.5cm;
   box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }
+
+
+  .affix {
+      top:0;
+      z-index: 9999 !important;
+      margin: auto;
+  }
+
+
+  .affix ~ .container-fluid {
+     position: relative;
+     top: 50px;
+  }
+
+ #logo {
+ 	width: 25%;
+ 	height: 25%;
+ }
+
+  
 
