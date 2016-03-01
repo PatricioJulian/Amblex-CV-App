@@ -12,9 +12,9 @@ html {
 body {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f6f6f6+47,ededed+100;White+3D+%231 */
 background: #ffffff; /* Old browsers */
-background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+background: -moz-linear-gradient(top,  #ffffff 0%, #ffd27c 47%, #ededed 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #ffffff 0%,#ffd27c 47%,#ededed 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #ffffff 0%,#ffd27c 47%,#ededed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
 
 position: relative; 
@@ -34,11 +34,11 @@ position: relative;
 
 
 .formPag {
-	background-color: #ececec;
-	border: 5px solid #dcdcdc;
+	border: 5px solid;
 	border-radius: 25px;
-	box-shadow: 10px 10px gray;
+	box-shadow: 10px 10px black;
 	min-width: 25px;
+    background-color: #fff;
 
 }
 
@@ -48,20 +48,18 @@ position: relative;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	border-radius: 30px;
+	background-color: #ffd27c;
+	color: #333333;
 
 
 }
 
 input {
-	    border: 2px solid #ccc;
     border-radius: 6px;
-    background-color: #f8f8f8;
 }
 
 textarea {
-	    border: 2px solid #ccc;
     border-radius: 4px;
-    background-color: #f8f8f8;
 }
 
 #CV {

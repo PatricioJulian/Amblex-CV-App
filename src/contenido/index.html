@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app ng-init="version='Beta 3.4'">
+<html ng-app ng-init="version='Beta 3.4.1'">
 <!-- AMBLEX CV CREATOR -->
   <!--
       Autor: Patricio J. Gerpe  
-      Ultima Actualización: 29/02/2016
+      Ultima Actualización: 1/03/2016
   -->
 <!-- El proyecto consiste en desarrollar un template de Curriculums Vitae, en donde el usuario registra sus datos profesionales en un form y con dicha información se devuelve rápidamente un Curriculum completamente diseñado diamico, vistoso e interactivo listo para imprimir. -->
 
@@ -48,7 +48,7 @@
 
 <div class="container-fluid noPrint">
   <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span>  Ayuda</button>
+ <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span>  Ayuda</button> -->
 
   <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -106,11 +106,11 @@ CoinWidgetCom.go({
 
 </div> 
     <div class="noPrint">
-           <b> Vista previa: </b>
+          <!-- <b> Vista previa: </b>
     <div class="btn-group btn-toggle"> 
     <button  id="ocultarCV" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-close"></span>Off</button>
     <button  id="mostrarCV" class="btn btn-primary active btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-open"></span>On</button>
-  </div>
+  </div> -->
 
 
 </div>
@@ -910,7 +910,7 @@ CoinWidgetCom.go({
   <!-- Encabezado -->
   <div class="row">
     <div id="encabezado" class="col-md-12">
-      <img class="left redondeado img-responsive" id="blah" src="#" alt="Foto de perfil" height="150" width="150" />
+      <img class="left redondeado img-responsive" id="blah" src="img/profile.jpg" src="#" alt="Foto de perfil" height="150" width="150" />
       <h1 id="displayNombre"> {{nombre}} {{apellido}} </h1>
       <h4> {{celular}} / {{fijo}} </h4>
       <h4> {{email}} </h4>
