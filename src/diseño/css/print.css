@@ -68,6 +68,14 @@ opacity: 0;
     display:none;
   }
 
+    .Print {
+    display:block;
+  }
+
+.redondeado {
+  border-radius: 50%/50%; 
+}
+
   #encabezado {
   opacity: 0.8;
   height: 150px;

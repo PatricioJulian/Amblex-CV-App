@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app ng-init="version='Beta 3.4.1'">
+<html ng-app ng-init="version='Beta 3.4.2'">
 <!-- AMBLEX CV CREATOR -->
   <!--
       Autor: Patricio J. Gerpe  
-      Ultima Actualización: 1/03/2016
+      Ultima Actualización: 03/03/2016
   -->
 <!-- El proyecto consiste en desarrollar un template de Curriculums Vitae, en donde el usuario registra sus datos profesionales en un form y con dicha información se devuelve rápidamente un Curriculum completamente diseñado diamico, vistoso e interactivo listo para imprimir. -->
 
@@ -48,7 +48,7 @@
 
 <div class="container-fluid noPrint">
   <!-- Trigger the modal with a button -->
- <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span>  Ayuda</button> -->
+ <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span>  </button> 
 
   <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -91,6 +91,7 @@ CoinWidgetCom.go({
 });
 </script> -->
 
+
 <!-- Botón de Donanciones -->
 <span style="overflow: hidden; border: 1px solid black; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 4px; padding-left: 0px; font-family: Arial; font-size: 12px; font-weight: bold; background-color: white;">
   <span style="padding: 4px; padding-left: 8px; background-color: #E98A0A; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: white;">
@@ -123,6 +124,7 @@ CoinWidgetCom.go({
   </div>
 
   <div class="container-fluid noPrint" id="top" align="center" data-spy="affix" data-offset-top="20">
+
 
 
 
@@ -882,25 +884,25 @@ CoinWidgetCom.go({
 
 
  
-    <div ID="barraHerramientas" class="container-fluid noPrint" align="center">
-      <button id="aFormP1" class="btn btn-default">Anterior 1</button>
-    <button id="aFormP2a" class="btn btn-default">Anterior 2</button>
-        <button class="btn btn-info btn-lg" id="ocultarForm">
+   <div ID="barraHerramientas" class="container-fluid noPrint" align="center">
+      <button id="aFormP1" class="btn btn-default btn-xs">Anterior 1</button>
+    <button id="aFormP2a" class="btn btn-default btn-xs">Anterior 2</button>
+        <button class="btn btn-info btn-sm" id="ocultarForm">
           <span class="glyphicon glyphicon-collapse-up"></span> Ocultar
         </button>
 
 
-         <button class="btn btn-info btn-lg" id="mostrarForm">
+         <button class="btn btn-info btn-sm" id="mostrarForm">
           <span class="glyphicon glyphicon-collapse-down"></span> Mostrar
         </button>
 
-            <button id="aFormP2b" class="btn btn-default">Siguiente 1</button>
-    <button id="aFormP3" class="btn btn-default">Siguiente 2</button>
+            <button id="aFormP2b" class="btn btn-default btn-xs">Siguiente 1</button>
+    <button id="aFormP3" class="btn btn-default btn-xs">Siguiente 2</button>
 
     </div>
-    </div>
+    </div> 
 
-
+<!-- SideBar Menu -->
 
       
 
@@ -910,7 +912,7 @@ CoinWidgetCom.go({
   <!-- Encabezado -->
   <div class="row">
     <div id="encabezado" class="col-md-12">
-      <img class="left redondeado img-responsive" id="blah" src="img/profile.jpg" src="#" alt="Foto de perfil" height="150" width="150" />
+      <img class="left redondeado img-responsive" id="blah" src="http://s14.postimg.org/lkgwf9p2p/profile.jpg" src="#" alt="Foto de perfil" height="150" width="150" />
       <h1 id="displayNombre"> {{nombre}} {{apellido}} </h1>
       <h4> {{celular}} / {{fijo}} </h4>
       <h4> {{email}} </h4>
@@ -1005,9 +1007,15 @@ CoinWidgetCom.go({
   </div> 
     <!-- PIE -->
   <div class="row">
+
+
     <div id="pie" class="col-md-12">
       <h4> Edad: {{edad}} años   DNI: {{DNI}}   Nacionalidad: Argentino</h4>
       <h4> Estado Civil: {{data.estadoCivil}} </h4>
+
+          <div class="container-fluid Print" id="top" align="left">
+ <img src="http://s16.postimg.org/vgikqw3sl/Amblex_Logo.png" class="img-responsive" id="logo"></img>
+  </div>
 
     </div>
   </div>

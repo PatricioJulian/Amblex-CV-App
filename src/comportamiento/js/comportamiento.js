@@ -214,4 +214,42 @@ $(document).ready(function(){
 				}
 			});
 
+
+
+	/*BARRA SIDE MENU*/
+    $("#menu-toggle-left").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active-left");
+    });
+
+    $("#menu-toggle-right").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active-right");
+    });
+
+	    $("#fPag1").click(function(){
+  		$("#formP2").hide();
+  		$("#formP3").hide();
+  		$("#formP1").fadeIn(500);
+	});
+
+	   	$("#fPag2").click(function(){
+  		$("#formP3").hide();
+  		$("#formP1").hide();
+  		$("#formP2").fadeIn(500);
+	});
+
+	   	$("#fPag3").click(function(){
+  		$("#formP2").hide();
+  		$("#formP1").hide();
+  		$("#formP3").fadeIn(500);
+	});
+
+
+
+
+
+
   });
+
+
