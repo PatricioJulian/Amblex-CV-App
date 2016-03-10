@@ -27,10 +27,21 @@ $(document).ready(function(){
 // Notificación de Bienvenida
 
 	$.notify({
+  icon: 'img/pjg.png',
 	title: '<strong>¡Bienvenido!</strong>',
 	message: '<p>Con esta aplicación podras tener un CV listo para imprimir, ¡Solo tienes que llenar el formulario!.</p>'
 },{
-	type: 'info noPrint'
+    offset: {
+    x: 10,
+    y: 70
+  },
+	type: 'info noPrint',
+  icon_type: 'img-circle',
+  template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+    '<img data-notify="icon" class="img-circle pull-left">' +
+    '<span data-notify="title">{1}</span>' +
+    '<span data-notify="message">{2}</span>' +
+  '</div>'
 });
 
 

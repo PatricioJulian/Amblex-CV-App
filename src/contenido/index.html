@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app ng-init="version='Beta 3.4.2'">
+<html ng-app ng-init="version='Beta 3.4.8'">
 <!-- AMBLEX CV CREATOR -->
   <!--
       Autor: Patricio J. Gerpe  
-      Ultima Actualización: 03/03/2016
+      Ultima Actualización: 10/03/2016
   -->
 <!-- El proyecto consiste en desarrollar un template de Curriculums Vitae, en donde el usuario registra sus datos profesionales en un form y con dicha información se devuelve rápidamente un Curriculum completamente diseñado diamico, vistoso e interactivo listo para imprimir. -->
 
@@ -45,16 +45,71 @@
 </head>
 
 <body>
+   <!-- Sidebar -->
+        <div id="sidebar-wrapper" class="noPrint">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Amblex App
+                    </a>
+                </li>
+                <li>
+                    <a href="#">AMBLEX RESUME APP</a>
+                </li>
+                <li>
+                        <!-- Color de Fondo-->
+                        <label for="bg">Color:</label> 
+                        <input type="color" class="theme" id="color"/>
+                </li>
+                <li>
+                           <!-- Foto -->
+       <div class="container-fluid">
+       <label for="fotoUrl">Foto de perfil</label><span class="glyphicon glyphicon-open"></span>
+    <input type="file" accept="image/x-png, image/gif, image/jpeg" onchange="readURL(this);" class="form-control input-sm" id="fotoUrl" />
+  </div>
+                </li>
+                <li>
+                    <a href="http://codepen.io/PatricioJulian/" target="_blank"><i class="fa fa-codepen fa-3x"></i></a>
+                </li>
+                <li>
+                    <a href="https://github.com/PatricioJulian" target="_blank"><i class="fa fa-github-square fa-3x"></i></a>
+                </li>
+                <li>
+                    <a href="https://ar.linkedin.com/in/patriciogerpe" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/pgerpemandarine" target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a>
+                </li>
 
+                <li><p style="color:white;"> Autor: Patricio Julian Gerpe </p></li>
+                <li><p style="color:white;"> Versión: {{version}} </p></li>
+
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+
+<!-- NavBar -->       
 <div class="container-fluid noPrint">
-  <!-- Trigger the modal with a button -->
- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span>  </button> 
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+          <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><img src="img/AmblexLogonav.png" class="img-logoBarra" height="15"></a></li>
+      </ul>
+  <ul class="nav navbar-nav">
+    <li><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span></li>
+    <li class="active"><a href="#">Amblex</a></li>
+    <li><a href="#" data-toggle="modal" data-target="#modalDP">¡Edita tu perfil!</a></li>
+</ul>
+    </div>
 
-  <!-- Modal -->
+
+</nav>
+
+<!-- Modal --> 
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog"> 
 
-    <!-- Modal content-->
+    <!-- Modal content -->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -71,73 +126,23 @@
     </div>
 
   </div>
-</div>
+</div>-->
 
-
-<!--
-<script src="http://coinwidget.com/widget/coin.js"></script>
-<script>
-CoinWidgetCom.go({
-  wallet_address: "36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo"
-  , currency: "bitcoin"
-  , counter: "amount"
-  , alignment: "bl"
-  , qrcode: true
-  , auto_show: true
-  , lbl_button: "Donar para estudios!"
-  , lbl_address: "Mi dirección Bitcoin:"
-  , lbl_count: "donaciones"
-  , lbl_amount: "BTC"
-});
-</script> -->
-
-
-<!-- Botón de Donanciones -->
-<span style="overflow: hidden; border: 1px solid black; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 4px; padding-left: 0px; font-family: Arial; font-size: 12px; font-weight: bold; background-color: white;">
-  <span style="padding: 4px; padding-left: 8px; background-color: #E98A0A; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: white;">
-    <a data-toggle="tooltip" data-placement="bottom" title="¡Con tu ayuda puedo seguir desarrollando nuevos proyectos y financiar mis estudios!" href="http://www.bitcoin.org/" style="text-decoration: none; color: white;">
-      <span style="-webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-weight: normal; color: white; font-size: 15px; background-color: white; color: #E98A0A; padding: 1px 5px; padding-top: 0px;">&#3647;</span>
-      Dona para estudios
-    </a>
-  </span>
-  <span data-toggle="tooltip" data-placement="bottom" title="Para donar haz una transacción con tu Billetera Bitcoin a esta dirección" style="padding: 5px;">
-    36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo
-  </span>
-</span>
-
-</div> 
-    <div class="noPrint">
-          <!-- <b> Vista previa: </b>
-    <div class="btn-group btn-toggle"> 
-    <button  id="ocultarCV" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-close"></span>Off</button>
-    <button  id="mostrarCV" class="btn btn-primary active btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-open"></span>On</button>
-  </div> -->
-
-
-</div>
-
-
-
-
-  <div class="container-fluid noPrint" id="top" align="center">
- <img src="http://s16.postimg.org/vgikqw3sl/Amblex_Logo.png" class="img-responsive" id="logo"></img>
-  </div>
-
-  <div class="container-fluid noPrint" id="top" align="center" data-spy="affix" data-offset-top="20">
-
-
-
-
-  <!-- FORMULARIO-->
+<div class="modal fade" id="modalDP">
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Te perfil</h4>
+        </div>
+        <div class="modal-body">
+        <!-- FORMULARIO-->
 
   <!-- Datos Personales-->
   <form id="formulario" class="form-inline"  data-toggle="validator" role="form" method="get" action="#">
     <div ID="formP1" class="form-group formPag">
       <h2> Datos Personales </h2>
       <div class="cierre">
-    <!-- Color de Fondo-->
-    <label for="bg">Color:</label> 
-        <input type="color" class="theme" id="color"/>
     <!-- Nombre -->
     <div class="form-group">
      <label class="wb-inv" id="nombreInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu nombre!">Tu nombre: </label>
@@ -148,11 +153,6 @@ CoinWidgetCom.go({
        <label id="apellidoInicia" data-toggle="tooltip" data-placement="right" title="¡Para poder continuar escribí tu apellido!">Apellido: </label>
        <input type="text" id="espacioApellido" class="input-sm form-control" ng-model="apellido" placeholder="¿Cuál es tu Apellido?" required />
       </div>
-       <!-- Foto -->
-       <div class="form-group">
-       <label for="fotoUrl">Foto de perfil</label><span class="glyphicon glyphicon-open"></span>
-    <input type="file" accept="image/x-png, image/gif, image/jpeg" onchange="readURL(this);" class="form-control" id="fotoUrl" />
-    </div>
        <!-- DNI -->
        <div class="form-group">
        <label id="dniInicia">DNI: </label>
@@ -878,41 +878,85 @@ CoinWidgetCom.go({
 
   </form>
 
-
-<!-- Barra de Herramientas -->
-
-
-
- 
+        <div class="modal-footer">
    <div ID="barraHerramientas" class="container-fluid noPrint" align="center">
       <button id="aFormP1" class="btn btn-default btn-xs">Anterior 1</button>
     <button id="aFormP2a" class="btn btn-default btn-xs">Anterior 2</button>
-        <button class="btn btn-info btn-sm" id="ocultarForm">
-          <span class="glyphicon glyphicon-collapse-up"></span> Ocultar
-        </button>
 
-
-         <button class="btn btn-info btn-sm" id="mostrarForm">
-          <span class="glyphicon glyphicon-collapse-down"></span> Mostrar
-        </button>
+<button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
 
             <button id="aFormP2b" class="btn btn-default btn-xs">Siguiente 1</button>
     <button id="aFormP3" class="btn btn-default btn-xs">Siguiente 2</button>
 
     </div>
     </div> 
+        </div>
+      </div>
+    </div>
+</div> 
 
-<!-- SideBar Menu -->
+  </div>
+</div>-->
+
+
+<!--
+<script src="http://coinwidget.com/widget/coin.js"></script>
+<script>
+CoinWidgetCom.go({
+  wallet_address: "36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo"
+  , currency: "bitcoin"
+  , counter: "amount"
+  , alignment: "bl"
+  , qrcode: true
+  , auto_show: true
+  , lbl_button: "Donar para estudios!"
+  , lbl_address: "Mi dirección Bitcoin:"
+  , lbl_count: "donaciones"
+  , lbl_amount: "BTC"
+});
+</script> -->
+
+
+<!-- Botón de Donanciones 
+<span style="overflow: hidden; border: 1px solid black; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 4px; padding-left: 0px; font-family: Arial; font-size: 12px; font-weight: bold; background-color: white;">
+  <span style="padding: 4px; padding-left: 8px; background-color: #E98A0A; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: white;">
+    <a data-toggle="tooltip" data-placement="bottom" title="¡Con tu ayuda puedo seguir desarrollando nuevos proyectos y financiar mis estudios!" href="http://www.bitcoin.org/" style="text-decoration: none; color: white;">
+      <span style="-webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-weight: normal; color: white; font-size: 15px; background-color: white; color: #E98A0A; padding: 1px 5px; padding-top: 0px;">&#3647;</span>
+      Dona para estudios
+    </a>
+  </span>
+  <span data-toggle="tooltip" data-placement="bottom" title="Para donar haz una transacción con tu Billetera Bitcoin a esta dirección" style="padding: 5px;">
+    36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo
+  </span>
+</span> -->
+
+</div> 
+    <div class="noPrint">
+          <!-- <b> Vista previa: </b>
+    <div class="btn-group btn-toggle"> 
+    <button  id="ocultarCV" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-close"></span>Off</button>
+    <button  id="mostrarCV" class="btn btn-primary active btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-open"></span>On</button>
+  </div> -->
+
+
+</div>
+
+
+
+
+
+
+  
+
 
       
-
 <!-- Layout -->
 <page size="A4">
-<div id="CV" class="container-fluid">
+<div id="CV" class="container-fluid print">
   <!-- Encabezado -->
   <div class="row">
     <div id="encabezado" class="col-md-12">
-      <img class="left redondeado img-responsive" id="blah" src="http://s14.postimg.org/lkgwf9p2p/profile.jpg" src="#" alt="Foto de perfil" height="150" width="150" />
+      <img class="left redondeado img-responsive" id="blah" src="img/profile.jpg" src="#" alt="Foto de perfil" height="150" width="150" />
       <h1 id="displayNombre"> {{nombre}} {{apellido}} </h1>
       <h4> {{celular}} / {{fijo}} </h4>
       <h4> {{email}} </h4>
@@ -1022,13 +1066,9 @@ CoinWidgetCom.go({
 </div>
 </page>
 
+<!--
 <footer class="noPrint" align="center">
-<a href="http://codepen.io/PatricioJulian/" target="_blank"><i class="fa fa-codepen fa-3x"></i></a>
-<a href="https://github.com/PatricioJulian" target="_blank"><i class="fa fa-github-square fa-3x"></i></a>
-<a href="https://ar.linkedin.com/in/patriciogerpe" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
-<a href="https://www.facebook.com/pgerpemandarine" target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a>
-<p style="text-align:center;"> Autor: Patricio Julian Gerpe </p>
-<p style="text-align:center;"> Versión: {{version}} </p>
+
 
 <h6> El proyecto aún esta en face beta y necesita considerablemente un tiempo prudencial de testing </h6>
 
@@ -1038,5 +1078,6 @@ CoinWidgetCom.go({
 </script>
 
 </footer>
+-->
 
 </body>

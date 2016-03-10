@@ -180,6 +180,7 @@ page[size="A4"] {
   display: block;
   margin: 0 auto;
   margin-bottom: 0.5cm;
+  margin-top: 2cm;
   box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }
 
@@ -358,6 +359,29 @@ page[size="A4"] {
 
 }
 
+.sidebar-nav {
+	position: fixed;
+	background-color: #111;
+	height:100%;
+}
 
+
+.alert-info {
+  padding: 10px;
+  width: 250px;
+}
+.alert-info > [data-notify="icon"] {
+  height: 50px;
+  margin-right: 12px;
+}
+.alert-info > [data-notify="title"] {
+  margin-bottom: 5px;
+}
+.alert-info > [data-notify="message"] {
+}
+
+.img-logoBarra {
+  margin-top: 0;
+}
   
 
