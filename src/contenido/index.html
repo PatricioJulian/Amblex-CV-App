@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app ng-init="version='Beta 3.4.8'">
+<html ng-app ng-init="version='Beta 3.4.9'">
 <!-- AMBLEX CV CREATOR -->
   <!--
       Autor: Patricio J. Gerpe  
-      Ultima Actualización: 10/03/2016
+      Ultima Actualización: 14/03/2016
   -->
 <!-- El proyecto consiste en desarrollar un template de Curriculums Vitae, en donde el usuario registra sus datos profesionales en un form y con dicha información se devuelve rápidamente un Curriculum completamente diseñado diamico, vistoso e interactivo listo para imprimir. -->
 
@@ -24,7 +24,7 @@
 
 <!-- UX: Jquery -->
 <script class="jsbin" src="../comportamiento/js/jquery-1.11.3.min.js"></script>
-<script class="jsbin" src="../comportamiento/js/jquery-ui.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>s
 <script src="../comportamiento/js/jquery.custom-scrollbar.js"></script>
 <script src="../comportamiento/js/read.js"></script>
 <script src="../comportamiento/js/comportamiento.js"></script>
@@ -33,6 +33,7 @@
 <script src="../comportamiento/js/bootstrap-notify.min.js"></script>
 
 <script type="text/javascript" src="https://blockchain.info/Resources/wallet/pay-now-button.js"></script>
+<script src="http://gitcdn.org/libs/bitcoinate/0.2.1/index.min.js"></script>
 
 
 
@@ -63,10 +64,7 @@
                 </li>
                 <li>
                            <!-- Foto -->
-       <div class="container-fluid">
-       <label for="fotoUrl">Foto de perfil</label><span class="glyphicon glyphicon-open"></span>
-    <input type="file" accept="image/x-png, image/gif, image/jpeg" onchange="readURL(this);" class="form-control input-sm" id="fotoUrl" />
-  </div>
+    <!--<span class="glyphicon glyphicon-open"></span><label for="file"><strong>Elegí un archivo</strong></label>--><input type="file" accept="image/x-png, image/gif, image/jpeg" onchange="readURL(this);" class="form-control input-sm inputfile" id="fotoUrl" />
                 </li>
                 <li>
                     <a href="http://codepen.io/PatricioJulian/" target="_blank"><i class="fa fa-codepen fa-3x"></i></a>
@@ -93,12 +91,12 @@
 <div class="container-fluid noPrint">
    <nav class="navbar navbar-inverse navbar-fixed-top">
           <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><img src="img/AmblexLogonav.png" class="img-logoBarra" height="15"></a></li>
-      </ul>
+        <li><button data-toggle="tooltip" data-placement="left" title="¡Con tu ayuda puedo seguir desarrollando nuevos proyectos y financiar mis estudios!" class="bitcoinate" data-size="50" height="50" data-address="36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo">¡Donar para estudios!</button></li>
+      </ul> 
   <ul class="nav navbar-nav">
-    <li><button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span></li>
-    <li class="active"><a href="#">Amblex</a></li>
-    <li><a href="#" data-toggle="modal" data-target="#modalDP">¡Edita tu perfil!</a></li>
+    <li><button type="button" class="btn btn-info btn" id="btnAyuda" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span></button></li>
+    <li class="active"><img src="img/AmblexLogonav.png" class="img-logoBarra" height="50"></li>
+    <li><a href="#" data-toggle="modal" data-target="#modalDP" id="btnPerfil"><strong>¡Edita tu perfil!</strong></a></li>
 </ul>
     </div>
 
@@ -128,12 +126,12 @@
   </div>
 </div>
 
-<div class="modal fade" id="modalDP">
+<div class="modal fade draggable resizable" id="modalDP">
   <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h4 class="modal-title">Te perfil</h4>
+          <h4 class="modal-title">Tu perfil</h4>
         </div>
         <div class="modal-body">
         <!-- FORMULARIO-->

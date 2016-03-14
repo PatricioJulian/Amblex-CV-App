@@ -32,6 +32,12 @@ position: relative;
 	padding-bottom: 5px;
 }
 
+#btnAyuda {
+  height: 50px;
+  background-color: #333;
+  border-color: #111;
+}
+
 #formulario {
 	margin:0;
 }
@@ -244,7 +250,15 @@ page[size="A4"] {
   width: 100%;
 }
 
+#fotoUrl {
+  background-color: #333;
+  color: #999;
+}
 
+#btnPerfil {
+
+  font-size: 14px;
+}
 
 .sidebar-nav {
   position: absolute;

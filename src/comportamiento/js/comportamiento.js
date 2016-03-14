@@ -85,7 +85,13 @@ $(document).ready(function(){
 
    
 
+  $(function() {
+    $( "#modalDP" ).draggable();
+  });
 
+  $(function() {
+    $( "#modalDP" ).resizable();
+  });
 
 
 
