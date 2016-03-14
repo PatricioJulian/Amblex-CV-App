@@ -89,6 +89,14 @@ $(document).ready(function(){
     $( "#modalDP" ).draggable();
   });
 
+
+
+    $(function() {
+    $( "#blah" ).draggable({
+  containment: "parent"
+});
+  });
+
   $(function() {
     $( "#modalDP" ).resizable();
   });
