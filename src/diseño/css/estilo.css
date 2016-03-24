@@ -400,3 +400,8 @@ page[size="A4"] {
 }
   
 
+.modal-backdrop {background: none;}
+
+.modal-content.ui-resizable {
+  overflow-y: scroll;
+}
