@@ -1,0 +1,40 @@
+doctype html
+html(ng-app='', ng-init="version='Beta 3.4.9'")
+  // AMBLEX CV CREATOR
+  //
+    Autor: Patricio J. Gerpe
+    Ultima Actualización: 14/03/2016
+    Feedbacks: Boton se ayuda no se ve, modal de ayuda letra muy chica, notificación al terminal que diga que tenes que apretar control P
+    Issues: Problema al cargar sección profesional del formulario.
+  // El proyecto consiste en desarrollar un template de Curriculums Vitae, en donde el usuario registra sus datos profesionales en un form y con dicha información se devuelve rápidamente un Curriculum completamente diseñado diamico, vistoso e interactivo listo para imprimir.
+  // Para dicho desafio utilicé tecnologías como AngularJS, Jquery, Bootstrap y Animate.Css en un diseño de Single Page App
+  head
+    meta(charset='UTF-8')
+    title Amblex Cv-App {{version}}
+    link(rel='icon', href='images/FavLogo.ico', type='image/x-icon')
+    script(src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js")
+    // Diseño: CSS + Jquery
+    link(href='stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='stylesheets/animate.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    link(href='stylesheets/style.css', rel='stylesheet')
+    link(rel='stylesheet', media='print', href='stylesheets/print.css')
+    link(rel='stylesheet', href='stylesheets/jquery.custom-scrollbar.css')
+    //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
+    // UX: Jquery
+    script.jsbin(src='javascripts/jquery-1.11.3.min.js')
+    script(src='javascripts/jquery-ui.js')
+    script(src='javascripts/jquery.custom-scrollbar.js')
+    script(src='javascripts/read.js')
+    script(src='javascripts/comportamiento.js')
+    script(src='javascripts/bootstrap.min.js')
+    script(src='javascripts/bootstrap-notify.min.js')
+    script(type='text/javascript', src='javascripts/pay-now-button.js')
+    script(src='http://gitcdn.org/libs/bitcoinate/0.2.1/index.min.js')
+    script(src='javascripts/validator.js')
+    //script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
+
+
+    // <script src="../comportamiento/js/formCrtl.js"></script>
+  body
+    block content

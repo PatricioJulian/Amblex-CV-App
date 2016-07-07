@@ -1,0 +1,805 @@
+extends layout
+
+block content
+  // Sidebar
+  #sidebar-wrapper.noPrint
+    ul.sidebar-nav
+      li.sidebar-brand
+        a(href='#')
+          | Amblex App
+      li
+        a(href='#') AMBLEX RESUME APP
+      li
+        // Color de Fondo
+        label(for='bg') Color:
+        input#color.theme(type='color')
+      li
+        // Foto
+        // <span class="glyphicon glyphicon-open"></span><label for="file"><strong>Elegí un archivo</strong></label>
+        input#fotoUrl.form-control.input-sm.inputfile(type='file', accept='image/x-png, image/gif, image/jpeg', onchange='readURL(this);')
+      li
+        a(href='http://codepen.io/PatricioJulian/', target='_blank')
+          i.fa.fa-codepen.fa-3x
+      li
+        a(href='https://github.com/PatricioJulian', target='_blank')
+          i.fa.fa-github-square.fa-3x
+      li
+        a(href='https://ar.linkedin.com/in/patriciogerpe', target='_blank')
+          i.fa.fa-linkedin-square.fa-3x
+      li
+        a(href='https://www.facebook.com/pgerpemandarine', target='_blank')
+          i.fa.fa-facebook-square.fa-3x
+      li
+        p(style='color:white;')  Autor: Patricio Julian Gerpe
+      li
+        p(style='color:white;')  Versión: {{version}}
+  // /#sidebar-wrapper
+  // NavBar
+  .container-fluid.noPrint
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      ul.nav.navbar-nav.navbar-right
+        li
+          button.bitcoinate(data-toggle='tooltip', data-placement='left', title='¡Con tu ayuda puedo seguir desarrollando nuevos proyectos y financiar mis estudios!', data-size='50', height='50', data-address='36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo') ¡Donar para estudios!
+      ul.nav.navbar-nav
+        li
+          button#btnAyuda.btn.btn-info.btn(type='button', data-toggle='modal', data-target='#myModal')
+            span.glyphicon.glyphicon-question-sign
+        li.active
+          img.img-logoBarra(src='images/AmblexLogonav.png', height='50')
+        li
+          a#btnPerfil(href='#', data-toggle='modal', data-target='#modalDP')
+            strong ¡Edita tu perfil!
+  // Modal
+  #myModal.modal.fade(role='dialog')
+    .modal-dialog
+      // Modal content
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal') ×
+          h4.modal-title Bienvenido a Amblex CVApp
+        .modal-body
+          p
+            | Complete el formulario de la parte superior y se auto-generará un curriculum listo para imprimir.
+          p
+            | Una vez finalizada la carga con
+            kbd ctrl + p
+            |  vas a poder imprimir tu cv
+          p
+            strong  ¡IMPORTANTE!
+            |  Para una correcta renderización la impresión debe configurarse en un tamaño de hoja A3, muy pronto la plantilla será ajustada para el tamaño A4
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Entendido
+  #modalDP.modal.fade.draggable.resizable
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4.modal-title Tu perfil
+        .modal-body
+          // FORMULARIO
+          // Datos Personales
+          form#formulario.form-inline(data-toggle='validator', role='form', method='get', action='#')
+            #formP1.form-group.formPag
+              h2  Datos Personales
+              .cierre
+                // Nombre
+                .form-group
+                  label#nombreInicia.wb-inv(data-toggle='tooltip', data-placement='right', title='¡Para poder continuar escribí tu nombre!') Tu nombre:
+                  input#espacioNombre.input-sm.form-control(type='text', ng-model='nombre', placeholder='¿Cuál es tu nombre?', required='')
+                // Apellido
+                .form-group
+                  label#apellidoInicia(data-toggle='tooltip', data-placement='right', title='¡Para poder continuar escribí tu apellido!') Apellido:
+                  input#espacioApellido.input-sm.form-control(type='text', ng-model='apellido', placeholder='¿Cuál es tu Apellido?', required='')
+                // DNI
+                .form-group
+                  label#dniInicia DNI:
+                  input#espacioDNI.input-sm(type='number', ng-model='DNI', placeholder='¿Cuál es tu DNI?', required='')
+                // Edad
+                .form-group
+                  label#edadInicia(data-toggle='tooltip', data-placement='right') Edad:
+                  input#espacioEdad.input-sm.form-control(type='number', ng-model='edad', placeholder='¿Cuál es tu edad?', required='')
+                // Estado Civil
+                .form-group
+                  label(for='estadoCivil')  Estado Civil:
+                  select.form-control(name='estadoCivil', ng-model='data.estadoCivil', required='')
+                    option(value='Soltero/a') Soltero/a
+                    option(value='Casado/a') Casado/a
+                    option(value='Divorciado/a') Divorciado/a
+                    option(value='Viudo/a') Viudo/a
+                // Celular
+                .form-group
+                  label#celularInicia(data-toggle='tooltip', data-placement='right', title='¡Para poder continuar escribí tu nro de Celular!') Celular:
+                  input#espacioCelular.input-sm.form-control(type='number', ng-model='celular', placeholder='¿Cuál es tu nro de Celular?', required='')
+                // Fijo
+                .form-group
+                  label#fijoInicia(data-toggle='tooltip', data-placement='right', title='¡Para poder continuar escribí tu nro de telefono fijo!') Telefono:
+                  input#espacioFijo.input-sm.form-control(type='number', ng-model='fijo', placeholder='¿Cuál es tu nro de telefono?')
+                // Email
+                .form-group
+                  i.fa.fa-envelope-o.fa-fw
+                  label#emailInicia(data-toggle='tooltip', data-placement='right', title='¡Para poder continuar escribí tu email!') Email:
+                  input#espacioFijo.input-sm.form-control(type='email', ng-model='email', placeholder='¿Cuál es tu email?', data-error='Porfavor escriba una dirección de email correcta', required='')
+                // Dirección
+                .form-group
+                  label#direccionInicia(data-toggle='tooltip', data-placement='right') Dirección:
+                  input#espaciodirCalle.input-sm(type='text', ng-model='calle', placeholder='¿En qué calle vivis?', required='')
+                  input#espaciodirNro.input-sm(type='number', ng-model='dirNro', placeholder='¿A qué altura?', required='')
+                  label(for='ciudad')  Zona:
+                  select(name='ciudad', ng-model='data.ciudad', required='')
+                    option(value='Capital Federal') Capital Federal
+                    option(value='GBA Norte') GBA Norte
+                    option(value='GBA Sur') GBA Sur
+                    option(value='GBA Oeste') GBA Oeste
+            #formP2.form-group.formPag
+              h2  Marco Educacional y Competencias Profesionales
+              // Marco Educacional & Competencias Profesionales
+              .form-group
+                ul
+                  // Máximo nivel alcanzado
+                  li
+                    .form-group
+                      label Titulo:
+                      input.input-sm.form-control(type='text', ng-model='form1.NombreTitulo', placeholder='¿Cuál el nombre de tu titulo?', maxlength='35', data-toggle='tooltip', data-placement='right', title='¡Recuerda, comienza con tu máximo nivel educativo alcanzado, Ej.: Licenciatura en Tecnología de los Alimentos ', required='')
+                    .form-group
+                      label Nombre Institución:
+                      input.input-sm.form-control(type='text', ng-model='form1.NombreInst', placeholder='¿Cuál el nombre de la Institución Educativa?', maxlength='35', data-toggle='tooltip', data-placement='right', title='', required='')
+                    .form-group
+                      label Materias Aprobadas:
+                      input.input-sm.form-control(type='number', ng-model='form1.Materias', placeholder='¿Cuántas materias tienes aprobadas?', maxlength='2', data-toggle='tooltip', data-placement='right', title='', required='')
+                    .form-group
+                      label Total Materias:
+                      input.input-sm.form-control(type='number', ng-model='form1.TotalMaterias', placeholder='¿De cuántas materias consta la carrera?', maxlength='2', data-toggle='tooltip', data-placement='right', title='', required='')
+                    .form-group
+                      label Fecha de Ingreso:
+                      input.input-sm.form-control(type='datetime', ng-model='form1.fechaINC', placeholder='¿Cuándo comenzaste a estudiar aca?', min='1959-12-31', max='2017-01-01', required='')
+                      label Fecha de Egreso:
+                      input.input-sm.form-control(type='datetime', ng-model='form1.fechaEGR', placeholder='¿Cuándo te graduaste o estimas graduarte', min='1959-12-31', max='2030-01-01', required='')
+                  // 2do nivel alcanzado
+                  li
+                    .form-group
+                      label Titulo:
+                      input.input-sm.form-control(type='text', ng-model='form2.NombreTitulo', placeholder='¿Cuál el nombre de tu titulo?', maxlength='35', data-toggle='tooltip', data-placement='right', title='¡Recuerda, comienza con tu 2do máximo nivel educativo alcanzado, Ej.: Bachillerato en Comercialización y Administración de Negocios', required='')
+                    .form-group
+                      label Nombre Institución:
+                      input.input-sm.form-control(type='text', ng-model='form2.NombreInst', placeholder='¿Cuál el nombre de la Institución Educativa?', maxlength='35', data-toggle='tooltip', data-placement='right', title='', required='')
+                    .form-group
+                      label Materias Aprobadas:
+                      input.input-sm.form-control(type='number', ng-model='form2.Materias', placeholder='¿Cuántas materias tienes aprobadas?', maxlength='2', data-toggle='tooltip', data-placement='right', title='', required='')
+                    .form-group
+                      label Total Materias:
+                      input.input-sm.form-control(type='number', ng-model='form2.TotalMaterias', placeholder='¿De cuántas materias consta la carrera?', maxlength='2', data-toggle='tooltip', data-placement='right', title='', required='')
+                    .form-group
+                      label Fecha de Ingreso:
+                      input.input-sm.form-control(type='datetime', ng-model='form2.fechaINC', placeholder='¿Cuándo comenzaste a estudiar aca?', min='1959-12-31', max='2017-01-01', required='')
+                      label Fecha de Egreso:
+                      input.input-sm.form-control(type='datetime', ng-model='form2.fechaEGR', placeholder='¿Cuándo te graduaste o estimas graduarte', min='1959-12-31', max='2030-01-01', required='')
+              // Idiomas
+              // 2da Lengua
+              .form-group
+                label(for='lengua2')  Segundo Idioma:
+                select(name='lengua2', ng-model='data.lengua2', required='')
+                  option(value='Ingles') Ingles
+                  option(value='Portugues') Portugues
+                  option(value='Frances') Frances
+                  option(value='Aleman') Aleman
+                  option(value='Chino Mandarin') Chino Mandarin
+                  option(value='Ruso') Ruso
+                label(for='lengua2lvl')  Dominio:
+                select(name='lengua2lvl', ng-model='data.lengua2lvl', required='')
+                  option(value='Bilingüe') Bilingüe
+                  option(value='Avanzado') Avanzado
+                  option(value='Intermedio') Intermedio
+                  option(value='Básico') Básico
+                  option(value='Inicial') Inicial
+                label
+                  | Certificado
+                  input#certiLeng2CheckSi(type='radio', ng-model='cert.name', value='Sí')
+                  |           Sí
+                label
+                  input#certiLeng2CheckNo(type='radio', ng-model='cert.name', ng-value='No')
+                  |           No
+              // 3ra Lengua
+              .form-group
+                label(for='lengua3')  Tercer Idioma:
+                select(name='lengua3', ng-model='data.lengua3', required='')
+                  option(value='Ingles') Ingles
+                  option(value='Portugues') Portugues
+                  option(value='Frances') Frances
+                  option(value='Aleman') Aleman
+                  option(value='Chino Mandarin') Chino Mandarin
+                  option(value='Ruso') Ruso
+                label(for='lengua3lvl')  Dominio:
+                select(name='lengua3lvl', ng-model='data.lengua3lvl', required='')
+                  option(value='Bilingüe') Bilingüe
+                  option(value='Avanzado') Avanzado
+                  option(value='Intermedio') Intermedio
+                  option(value='Básico') Básico
+                  option(value='Inicial') Inicial
+                label
+                  | Certificado
+                  input#certiLeng3CheckSi(type='radio', ng-model='cert3.name', value='Sí')
+                  |           Sí
+                label
+                  input#certiLeng3CheckNo(type='radio', ng-model='cert3.name', ng-value='No')
+                  |           No
+              // Habilidades Blandas
+              // Soft Skill 1
+              .form-group
+                label(for='softskill1')  Habilidad blanda que más te define:
+                select.form-control(name='softskill1', ng-model='data.softskill1', required='')
+                  option(value='Etica') Etica
+                  option(value='Prudencia') Prudencia
+                  option(value='Justicia') Justicia
+                  option(value='Fortaleza') Fortaleza
+                  option(value='Orientación al cliente') Orientación al cliente
+                  option(value='Orientación a resultados') Orientación a resultados
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Sencillez') Sencillez
+                  option(value='Adaptabilidad al cambio') Adaptabilidad al cambio
+                  option(value='Temple') Temple
+                  option(value='Perseverancia') Perseverancia
+                  option(value='Integridad') Integridad
+                  option(value='Innovación') Innovación
+                  option(value='Iniciativa') Iniciativa
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Emponderamiento') Emponderamiento
+                  option(value='Autocontrol') Autocontrol
+                  option(value='Desarrollo de las personas') Desarrollo de las personas
+                  option(value='Conciencia Organizacional') Conciencia Organizacional
+                  option(value='Desarrollo del equipo') Desarrollo del equipo
+                  option(value='Modalidades de contacto') Modalidades de contacto
+                  option(value='Habilidades mediaticas') Habilidades mediaticas
+                  option(value='Liderazgo') Liderazgo
+                  option(value='Liderazgo para el cambio') Liderazgo para el cambio
+                  option(value='Pensamiento estratégico') Pensamiento estratégico
+                  option(value='Dinamismo Energia') Dinamismo Energia
+                  option(value='Cosmopolitalismo') Cosmopolitalismo
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Colaboración') Colaboración
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Franqueza') Franqueza
+                  option(value='Habilidad analitica') Habilidad analitica
+                  option(value='Autonomia') Autonomia
+                  option(value='Compromiso') Compromiso
+                  option(value='Productividad') Productividad
+                  option(value='Orientación al cliente interno y externo') Orientación al cliente interno y externo
+                  option(value='Profundidad en el conocimiento de los productos') Profundidad en el conocimiento de los productos"
+                  option(value='Negociación') Negociación
+                  option(value='Habilidades comunicacionales') Habilidades comunicacionales
+                  option(value='Facilidad para el aprendizaje continuo') Facilidad para el aprendizaje continuo
+                  option(value='Credibilidad técnica') Credibilidad técnica
+                  option(value='Presentación de soluciones comerciales') Presentación de soluciones comerciales
+                  option(value='Resolución de problemas comerciales') Resolución de problemas comerciales
+                  option(value='Capacidad de planificación y organización') Capacidad de planificación y organización
+                  option(value='Disciplina personal') Disciplina personal
+                  option(value='Conocimiento del negocio y la industria') Conocimiento del negocio y la industria
+                  option(value='Construcción de relaciones de negocios') Construcción de relaciones de negocios
+                  option(value='Manejo de relaciones de negocios') Manejo de relaciones de negocios
+                  option(value='Búsqueda de información') Búsqueda de información
+                  option(value='Responsabilidad') Responsabilidad
+                  option(value='Autoconfianza') Confianza en uno mismo
+                  option(value='Impacto e influencia') Impacto e influencia
+                  option(value='Desarrollo de profesionales inteligentes') Desarrollo de profesionales inteligentes
+                  option(value='Desarrollo de redes flexibles') Desarrollo de redes flexibles
+                  option(value='Fidelización del cliente') Fidelización del cliente
+                  option(value='Gerenciamiento') Gerenciamiento
+                  option(value='Coaching') Coaching
+                  option(value='Oratoria') Oratoria
+              // Soft Skill 2
+              .form-group
+                label(for='softskill2')  En 2do lugar habilidad blanda que te caracterice:
+                select.form-control(name='softskill2', ng-model='data.softskill2', required='')
+                  option(value='Etica') Etica
+                  option(value='Prudencia') Prudencia
+                  option(value='Justicia') Justicia
+                  option(value='Fortaleza') Fortaleza
+                  option(value='Orientación al cliente') Orientación al cliente
+                  option(value='Orientación a resultados') Orientación a resultados
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Sencillez') Sencillez
+                  option(value='Adaptabilidad al cambio') Adaptabilidad al cambio
+                  option(value='Temple') Temple
+                  option(value='Perseverancia') Perseverancia
+                  option(value='Integridad') Integridad
+                  option(value='Innovación') Innovación
+                  option(value='Iniciativa') Iniciativa
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Emponderamiento') Emponderamiento
+                  option(value='Autocontrol') Autocontrol
+                  option(value='Desarrollo de las personas') Desarrollo de las personas
+                  option(value='Conciencia Organizacional') Conciencia Organizacional
+                  option(value='Desarrollo del equipo') Desarrollo del equipo
+                  option(value='Modalidades de contacto') Modalidades de contacto
+                  option(value='Habilidades mediaticas') Habilidades mediaticas
+                  option(value='Liderazgo') Liderazgo
+                  option(value='Liderazgo para el cambio') Liderazgo para el cambio
+                  option(value='Pensamiento estratégico') Pensamiento estratégico
+                  option(value='Dinamismo Energia') Dinamismo Energia
+                  option(value='Cosmopolitalismo') Cosmopolitalismo
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Colaboración') Colaboración
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Franqueza') Franqueza
+                  option(value='Habilidad analitica') Habilidad analitica
+                  option(value='Autonomia') Autonomia
+                  option(value='Compromiso') Compromiso
+                  option(value='Productividad') Productividad
+                  option(value='Orientación al cliente interno y externo') Orientación al cliente interno y externo
+                  option(value='Profundidad en el conocimiento de los productos') Profundidad en el conocimiento de los productos"
+                  option(value='Negociación') Negociación
+                  option(value='Habilidades comunicacionales') Habilidades comunicacionales
+                  option(value='Facilidad para el aprendizaje continuo') Facilidad para el aprendizaje continuo
+                  option(value='Credibilidad técnica') Credibilidad técnica
+                  option(value='Presentación de soluciones comerciales') Presentación de soluciones comerciales
+                  option(value='Resolución de problemas comerciales') Resolución de problemas comerciales
+                  option(value='Capacidad de planificación y organización') Capacidad de planificación y organización
+                  option(value='Disciplina personal') Disciplina personal
+                  option(value='Conocimiento del negocio y la industria') Conocimiento del negocio y la industria
+                  option(value='Construcción de relaciones de negocios') Construcción de relaciones de negocios
+                  option(value='Manejo de relaciones de negocios') Manejo de relaciones de negocios
+                  option(value='Búsqueda de información') Búsqueda de información
+                  option(value='Responsabilidad') Responsabilidad
+                  option(value='Autoconfianza') Confianza en uno mismo
+                  option(value='Impacto e influencia') Impacto e influencia
+                  option(value='Desarrollo de profesionales inteligentes') Desarrollo de profesionales inteligentes
+                  option(value='Desarrollo de redes flexibles') Desarrollo de redes flexibles
+                  option(value='Fidelización del cliente') Fidelización del cliente
+                  option(value='Gerenciamiento') Gerenciamiento
+                  option(value='Coaching') Coaching
+                  option(value='Oratoria') Oratoria
+              // Soft Skill 3
+              .form-group
+                label(for='softskill3')  Habilidad Blanda 3:
+                select.form-control(name='softskill3', ng-model='data.softskill3', required='')
+                  option(value='Etica') Etica
+                  option(value='Prudencia') Prudencia
+                  option(value='Justicia') Justicia
+                  option(value='Fortaleza') Fortaleza
+                  option(value='Orientación al cliente') Orientación al cliente
+                  option(value='Orientación a resultados') Orientación a resultados
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Sencillez') Sencillez
+                  option(value='Adaptabilidad al cambio') Adaptabilidad al cambio
+                  option(value='Temple') Temple
+                  option(value='Perseverancia') Perseverancia
+                  option(value='Integridad') Integridad
+                  option(value='Innovación') Innovación
+                  option(value='Iniciativa') Iniciativa
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Emponderamiento') Emponderamiento
+                  option(value='Autocontrol') Autocontrol
+                  option(value='Desarrollo de las personas') Desarrollo de las personas
+                  option(value='Conciencia Organizacional') Conciencia Organizacional
+                  option(value='Desarrollo del equipo') Desarrollo del equipo
+                  option(value='Modalidades de contacto') Modalidades de contacto
+                  option(value='Habilidades mediaticas') Habilidades mediaticas
+                  option(value='Liderazgo') Liderazgo
+                  option(value='Liderazgo para el cambio') Liderazgo para el cambio
+                  option(value='Pensamiento estratégico') Pensamiento estratégico
+                  option(value='Dinamismo Energia') Dinamismo Energia
+                  option(value='Cosmopolitalismo') Cosmopolitalismo
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Colaboración') Colaboración
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Franqueza') Franqueza
+                  option(value='Habilidad analitica') Habilidad analitica
+                  option(value='Autonomia') Autonomia
+                  option(value='Compromiso') Compromiso
+                  option(value='Productividad') Productividad
+                  option(value='Orientación al cliente interno y externo') Orientación al cliente interno y externo
+                  option(value='Profundidad en el conocimiento de los productos') Profundidad en el conocimiento de los productos"
+                  option(value='Negociación') Negociación
+                  option(value='Habilidades comunicacionales') Habilidades comunicacionales
+                  option(value='Facilidad para el aprendizaje continuo') Facilidad para el aprendizaje continuo
+                  option(value='Credibilidad técnica') Credibilidad técnica
+                  option(value='Presentación de soluciones comerciales') Presentación de soluciones comerciales
+                  option(value='Resolución de problemas comerciales') Resolución de problemas comerciales
+                  option(value='Capacidad de planificación y organización') Capacidad de planificación y organización
+                  option(value='Disciplina personal') Disciplina personal
+                  option(value='Conocimiento del negocio y la industria') Conocimiento del negocio y la industria
+                  option(value='Construcción de relaciones de negocios') Construcción de relaciones de negocios
+                  option(value='Manejo de relaciones de negocios') Manejo de relaciones de negocios
+                  option(value='Búsqueda de información') Búsqueda de información
+                  option(value='Responsabilidad') Responsabilidad
+                  option(value='Autoconfianza') Confianza en uno mismo
+                  option(value='Impacto e influencia') Impacto e influencia
+                  option(value='Desarrollo de profesionales inteligentes') Desarrollo de profesionales inteligentes
+                  option(value='Desarrollo de redes flexibles') Desarrollo de redes flexibles
+                  option(value='Fidelización del cliente') Fidelización del cliente
+                  option(value='Gerenciamiento') Gerenciamiento
+                  option(value='Coaching') Coaching
+                  option(value='Oratoria') Oratoria
+              // Soft Skill 4
+              .form-group
+                label(for='softskill4')  Habilidad Blanda 4:
+                select.form-control(name='softskill4', ng-model='data.softskill4', required='')
+                  option(value='Etica') Etica
+                  option(value='Prudencia') Prudencia
+                  option(value='Justicia') Justicia
+                  option(value='Fortaleza') Fortaleza
+                  option(value='Orientación al cliente') Orientación al cliente
+                  option(value='Orientación a resultados') Orientación a resultados
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Sencillez') Sencillez
+                  option(value='Adaptabilidad al cambio') Adaptabilidad al cambio
+                  option(value='Temple') Temple
+                  option(value='Perseverancia') Perseverancia
+                  option(value='Integridad') Integridad
+                  option(value='Innovación') Innovación
+                  option(value='Iniciativa') Iniciativa
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Emponderamiento') Emponderamiento
+                  option(value='Autocontrol') Autocontrol
+                  option(value='Desarrollo de las personas') Desarrollo de las personas
+                  option(value='Conciencia Organizacional') Conciencia Organizacional
+                  option(value='Desarrollo del equipo') Desarrollo del equipo
+                  option(value='Modalidades de contacto') Modalidades de contacto
+                  option(value='Habilidades mediaticas') Habilidades mediaticas
+                  option(value='Liderazgo') Liderazgo
+                  option(value='Liderazgo para el cambio') Liderazgo para el cambio
+                  option(value='Pensamiento estratégico') Pensamiento estratégico
+                  option(value='Dinamismo Energia') Dinamismo Energia
+                  option(value='Cosmopolitalismo') Cosmopolitalismo
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Colaboración') Colaboración
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Franqueza') Franqueza
+                  option(value='Habilidad analitica') Habilidad analitica
+                  option(value='Autonomia') Autonomia
+                  option(value='Compromiso') Compromiso
+                  option(value='Productividad') Productividad
+                  option(value='Orientación al cliente interno y externo') Orientación al cliente interno y externo
+                  option(value='Profundidad en el conocimiento de los productos') Profundidad en el conocimiento de los productos"
+                  option(value='Negociación') Negociación
+                  option(value='Habilidades comunicacionales') Habilidades comunicacionales
+                  option(value='Facilidad para el aprendizaje continuo') Facilidad para el aprendizaje continuo
+                  option(value='Credibilidad técnica') Credibilidad técnica
+                  option(value='Presentación de soluciones comerciales') Presentación de soluciones comerciales
+                  option(value='Resolución de problemas comerciales') Resolución de problemas comerciales
+                  option(value='Capacidad de planificación y organización') Capacidad de planificación y organización
+                  option(value='Disciplina personal') Disciplina personal
+                  option(value='Conocimiento del negocio y la industria') Conocimiento del negocio y la industria
+                  option(value='Construcción de relaciones de negocios') Construcción de relaciones de negocios
+                  option(value='Manejo de relaciones de negocios') Manejo de relaciones de negocios
+                  option(value='Búsqueda de información') Búsqueda de información
+                  option(value='Responsabilidad') Responsabilidad
+                  option(value='Autoconfianza') Confianza en uno mismo
+                  option(value='Impacto e influencia') Impacto e influencia
+                  option(value='Desarrollo de profesionales inteligentes') Desarrollo de profesionales inteligentes
+                  option(value='Desarrollo de redes flexibles') Desarrollo de redes flexibles
+                  option(value='Fidelización del cliente') Fidelización del cliente
+                  option(value='Gerenciamiento') Gerenciamiento
+                  option(value='Coaching') Coaching
+                  option(value='Oratoria') Oratoria
+              // Soft Skill 4
+              .form-group
+                label(for='softskill5')  Habilidad Blanda 5:
+                select.form-control(name='softskill5', ng-model='data.softskill5', required='')
+                  option(value='Etica') Etica
+                  option(value='Prudencia') Prudencia
+                  option(value='Justicia') Justicia
+                  option(value='Fortaleza') Fortaleza
+                  option(value='Orientación al cliente') Orientación al cliente
+                  option(value='Orientación a resultados') Orientación a resultados
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Sencillez') Sencillez
+                  option(value='Adaptabilidad al cambio') Adaptabilidad al cambio
+                  option(value='Temple') Temple
+                  option(value='Perseverancia') Perseverancia
+                  option(value='Integridad') Integridad
+                  option(value='Innovación') Innovación
+                  option(value='Iniciativa') Iniciativa
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Emponderamiento') Emponderamiento
+                  option(value='Autocontrol') Autocontrol
+                  option(value='Desarrollo de las personas') Desarrollo de las personas
+                  option(value='Conciencia Organizacional') Conciencia Organizacional
+                  option(value='Desarrollo del equipo') Desarrollo del equipo
+                  option(value='Modalidades de contacto') Modalidades de contacto
+                  option(value='Habilidades mediaticas') Habilidades mediaticas
+                  option(value='Liderazgo') Liderazgo
+                  option(value='Liderazgo para el cambio') Liderazgo para el cambio
+                  option(value='Pensamiento estratégico') Pensamiento estratégico
+                  option(value='Dinamismo Energia') Dinamismo Energia
+                  option(value='Cosmopolitalismo') Cosmopolitalismo
+                  option(value='Flexibilidad') Flexibilidad
+                  option(value='Colaboración') Colaboración
+                  option(value='Calidad de trabajo') Calidad de trabajo
+                  option(value='Franqueza') Franqueza
+                  option(value='Habilidad analitica') Habilidad analitica
+                  option(value='Autonomia') Autonomia
+                  option(value='Compromiso') Compromiso
+                  option(value='Productividad') Productividad
+                  option(value='Orientación al cliente interno y externo') Orientación al cliente interno y externo
+                  option(value='Profundidad en el conocimiento de los productos') Profundidad en el conocimiento de los productos"
+                  option(value='Negociación') Negociación
+                  option(value='Habilidades comunicacionales') Habilidades comunicacionales
+                  option(value='Facilidad para el aprendizaje continuo') Facilidad para el aprendizaje continuo
+                  option(value='Credibilidad técnica') Credibilidad técnica
+                  option(value='Presentación de soluciones comerciales') Presentación de soluciones comerciales
+                  option(value='Resolución de problemas comerciales') Resolución de problemas comerciales
+                  option(value='Capacidad de planificación y organización') Capacidad de planificación y organización
+                  option(value='Disciplina personal') Disciplina personal
+                  option(value='Conocimiento del negocio y la industria') Conocimiento del negocio y la industria
+                  option(value='Construcción de relaciones de negocios') Construcción de relaciones de negocios
+                  option(value='Manejo de relaciones de negocios') Manejo de relaciones de negocios
+                  option(value='Búsqueda de información') Búsqueda de información
+                  option(value='Responsabilidad') Responsabilidad
+                  option(value='Autoconfianza') Confianza en uno mismo
+                  option(value='Impacto e influencia') Impacto e influencia
+                  option(value='Desarrollo de profesionales inteligentes') Desarrollo de profesionales inteligentes
+                  option(value='Desarrollo de redes flexibles') Desarrollo de redes flexibles
+                  option(value='Fidelización del cliente') Fidelización del cliente
+                  option(value='Gerenciamiento') Gerenciamiento
+                  option(value='Coaching') Coaching
+                  option(value='Oratoria') Oratoria
+              // Conocimientos Duros
+              // Paquete Office
+              .form-group
+                label(for='office')  Paquete Office
+                label(for='officelvl')  Dominio:
+                select(name='officelvl', ng-model='data.officelvl', required='')
+                  option(value='Experto') Experto
+                  option(value='Avanzado') Avanzado
+                  option(value='Intermedio') Intermedio
+                  option(value='Básico') Básico
+                  option(value='Nulo') Nulo
+                label
+                  | Certificado:
+                  input#certiOfficeCheckSi(type='radio', ng-model='certO.name', value='Sí')
+                  |           Sí
+                label
+                  input#certiOfficeCheckNo(type='radio', ng-model='certO.name', ng-value='No')
+                  |           No
+              // Programación
+              .form-group
+                label(for='programacion')  Programación
+                label(for='programacionlvl')  Dominio:
+                select(name='programacionlvl', ng-model='data.programacionlvl', required='')
+                  option(value='Experto') Experto
+                  option(value='Avanzado') Avanzado
+                  option(value='Intermedio') Intermedio
+                  option(value='Básico') Básico
+                  option(value='Nulo') Nulo
+                label
+                  | Certificado
+                  input#certiProgCheckSi(type='radio', ng-model='certP.name', value='Sí')
+                  |           Sí
+                label
+                  input#certiProgCheckNo(type='radio', ng-model='certP.name', ng-value='No')
+                  |           No
+            #formP3.form-group.formPag
+              h2  Marco Laboral
+              // Marco Ocupacional
+              // Experiencia más reciente
+              .form-group
+                ol
+                  li
+                    b(data-toggle='tooltip', data-placement='right', title='¡Recuerda, en caso de no contar con experiencia puedes capitalizar vivencias extra-laborales como voluntariados o proyectos estudiantiles! ')  Tu experiencia más reciente ->
+                    .form-group
+                      label Nombre Organización:
+                      input.input-sm.form-control(type='text', ng-model='exp1.NombreOrg', placeholder='¿Cuál el nombre de la organización?', maxlength='35', required='')
+                    .form-group
+                      label(data-toggle='tooltip', data-placement='right', title='Escribe en breves palabras el tamaño de la organización y su actividad') Industria:
+                      input.input-sm.form-control(type='text', ng-model='exp1.IndustriaOrg', placeholder='¿A qué se dedica esa organización?', maxlength='35', data-toggle='tooltip', data-placement='right', title='Ej.: Multinacional de Desarrollo de Software', required='')
+                    .form-group
+                      label Fecha de Ingreso:
+                      input.input-sm.form-control(type='datetime', ng-model='exp1.fechaING', placeholder='¿Cuándo comenzaste a trabajar aca?', min='1959-12-31', max='2017-01-01', required='')
+                      label Fecha de Egreso:
+                      input.input-sm.form-control(type='datetime', ng-model='exp1.fechaEGR', placeholder='¿Cuándo terminaste de trabajar aca?', min='1959-12-31', max='2017-01-01', required='')
+                    .form-group
+                      label Posición Desempeñada:
+                      input.input-sm.form-control(type='text', ng-model='exp1.Pos', placeholder='¿Que posición desempeñaste', maxlength='35', required='')
+                    .form-group
+                      label(data-toggle='tooltip', data-placement='right', data-html='true', title='Trata de ser lo más concreto posible. Es recomendable usar terminologia estadistica. Demuestra cuanto has ayudado a que mejore el desarrollo de tu empresa') Logros obtenidos:
+                      textarea.input-sm(name='exp1.Log', ng-model='exp1.Log', maxlength='350', required='')
+                    .form-group
+                      label(data-toggle='tooltip', data-placement='right', data-html='true', title='') Tareas realizadas:
+                      textarea.input-sm(name='exp1.Tar', ng-model='exp1.Tar', maxlength='350', required='')
+                  // Experiencia 2
+                  li
+                    b(data-toggle='tooltip', data-placement='right', title='¡Recuerda, en los CVs siempre es conveniente que se ubiquen los trabajos más recientes en la parte superior y hacia abajo se ordenen las experiencias que siguen en el plano cronologico, los reclutadores verán como haz progresado! ')  Tu siguiente experiencia más reciente ->
+                    .form-group
+                      label Nombre Organización:
+                      input.input-sm.form-control(type='text', ng-model='exp2.NombreOrg', placeholder='¿Cuál el nombre de la organización?', maxlength='35', required='')
+                    .form-group
+                      label Industria:
+                      input.input-sm.form-control(type='text', ng-model='exp2.IndustriaOrg', placeholder='¿A qué se dedica esa organización?', maxlength='35', data-toggle='tooltip', data-placement='right', title='Ej.: Pymes de Consultoria Juridica', required='')
+                    .form-group
+                      label Fecha de Ingreso:
+                      input.input-sm.form-control(type='datetime', ng-model='exp2.fechaING', placeholder='¿Cuándo comenzaste a trabajar aca?', min='1959-12-31', max='2017-01-01', required='')
+                      label Fecha de Egreso:
+                      input.input-sm.form-control(type='datetime', ng-model='exp2.fechaEGR', placeholder='¿Cuándo terminaste de trabajar aca?', min='1959-12-31', max='2017-01-01', required='')
+                    .form-group
+                      label Posición Desempeñada:
+                      input.input-sm.form-control(type='text', ng-model='exp2.Pos', placeholder='¿Que posición desempeñaste', maxlength='35', data-toggle='tooltip', data-placement='right', title='Ej.: Cadete Administrativo', required='')
+                    .form-group
+                      label(data-toggle='tooltip', data-placement='right', data-html='true', title='Comunica tu participación de manera asertiva, en todo trabajo hay conflictos, ¿Recuerdas haber resuelto uno positivamente? ¿Cómo repercutió en tus compañeros?') Logros obtenidos:
+                      textarea.input-sm(name='exp2.Log', ng-model='exp2.Log', maxlength='350', required='')
+                    .form-group
+                      label(data-toggle='tooltip', data-placement='right', data-html='true', title='') Tareas realizadas:
+                      textarea.input-sm(name='exp2.Tar', ng-model='exp2.Tar', maxlength='350', required='')
+                  // Experiencia 3
+                  li
+                    b  Tu siguiente experiencia más reciente ->
+                    .form-group
+                      label Nombre Organización:
+                      input.input-sm.form-control(type='text', ng-model='exp3.NombreOrg', placeholder='¿Cuál el nombre de la organización?', maxlength='35', required='')
+                    .form-group
+                      label Industria:
+                      input.input-sm.form-control(type='text', ng-model='exp3.IndustriaOrg', placeholder='¿A qué se dedica esa organización?', maxlength='35', data-toggle='tooltip', data-placement='right', title='Ej.: Outsourcing de Telemarketing', required='')
+                    .form-group
+                      label Fecha de Ingreso:
+                      input.input-sm.form-control(type='datetime', ng-model='exp3.fechaING', placeholder='¿Cuándo comenzaste a trabajar aca?', min='1959-12-31', max='2017-01-01', required='')
+                      label Fecha de Egreso:
+                      input.input-sm.form-control(type='datetime', ng-model='exp3.fechaEGR', placeholder='¿Cuándo terminaste de trabajar aca?', min='1959-12-31', max='2017-01-01', required='')
+                    .form-group
+                      label Posición Desempeñada:
+                      input.input-sm.form-control(type='text', ng-model='exp3.Pos', placeholder='¿Que posición desempeñaste', maxlength='35', data-toggle='tooltip', data-placement='right', title='Ej.: Agente de atención al cliente', required='')
+                    .form-group
+                      label(logros='', obtenidos:='', <='', label='')
+                      textarea.input-sm(name='exp3.Log', ng-model='exp3.Log', maxlength='350', required='')
+                    .form-group
+                      label(data-toggle='tooltip', data-placement='right', data-html='true', title='') Tareas realizadas:
+                      textarea.input-sm(name='exp3.Tar', ng-model='exp3.Tar', maxlength='350', required='')
+              // Perfil Profesional
+              .form-group
+                label#pProfInicia(data-toggle='tooltip', data-placement='right', data-html='true', title='Describete') Perfil Profesional:
+                textarea.input-sm(name='perfilProfesional', ng-model='perfilProfesional', maxlength='200', required='')
+              // Objetivo Laboral
+              .form-group
+                label#objLabInicia(data-toggle='tooltip', data-placement='top', title='Es conveniente que hables en presente y que comuniques de forma concreta que buscas laboral/profesionalmente', maxlength='200') Objetivo Laboral:
+                textarea.input-sm(name='objLab', ng-model='objLab', data-toggle='tooltip', data-placement='top', title='Ej.: Deseo posicionarme/insertarme/desarrollarme/resectorizarme... en el área de...', required='')
+              button#aceptar.btn.btn-default(type='submit') Aceptar
+          .modal-footer
+            #barraHerramientas.container-fluid.noPrint(align='center')
+              button#aFormP1.btn.btn-default.btn-xs Anterior 1
+              button#aFormP2a.btn.btn-default.btn-xs Anterior 2
+              button.btn.btn-default(type='button', data-dismiss='modal') Aceptar
+              button#aFormP2b.btn.btn-default.btn-xs Siguiente 1
+              button#aFormP3.btn.btn-default.btn-xs Siguiente 2
+  //
+    <script src="http://coinwidget.com/widget/coin.js"></script>
+    <script>
+    CoinWidgetCom.go({
+    wallet_address: "36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo"
+    , currency: "bitcoin"
+    , counter: "amount"
+    , alignment: "bl"
+    , qrcode: true
+    , auto_show: true
+    , lbl_button: "Donar para estudios!"
+    , lbl_address: "Mi dirección Bitcoin:"
+    , lbl_count: "donaciones"
+    , lbl_amount: "BTC"
+    });
+    </script>
+  //
+    Botón de Donanciones
+    <span style="overflow: hidden; border: 1px solid black; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 4px; padding-left: 0px; font-family: Arial; font-size: 12px; font-weight: bold; background-color: white;">
+    <span style="padding: 4px; padding-left: 8px; background-color: #E98A0A; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: white;">
+    <a data-toggle="tooltip" data-placement="bottom" title="¡Con tu ayuda puedo seguir desarrollando nuevos proyectos y financiar mis estudios!" href="http://www.bitcoin.org/" style="text-decoration: none; color: white;">
+    <span style="-webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-weight: normal; color: white; font-size: 15px; background-color: white; color: #E98A0A; padding: 1px 5px; padding-top: 0px;">&#3647;</span>
+    Dona para estudios
+    </a>
+    </span>
+    <span data-toggle="tooltip" data-placement="bottom" title="Para donar haz una transacción con tu Billetera Bitcoin a esta dirección" style="padding: 5px;">
+    36RqiqKrKdgwCEsoFNtNVjJWNFVfZbKkMo
+    </span>
+    </span>
+  .noPrint
+    //
+      <b> Vista previa: </b>
+      <div class="btn-group btn-toggle">
+      <button  id="ocultarCV" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-close"></span>Off</button>
+      <button  id="mostrarCV" class="btn btn-primary active btn-lg" data-toggle="collapse" data-target="#CV"><span class="glyphicon glyphicon-eye-open"></span>On</button>
+      </div>
+  // Layout
+  page#pagI(size='A4')
+    #CV.container-fluid.print
+      // Encabezado
+      .row
+        #encabezado.col-md-12
+          img#blah.left.redondeado.img-responsive.draggable(src='images/profile.jpg', alt='Foto de perfil', height='150', width='150')
+          h1#displayNombre  {{nombre}} {{apellido}}
+          h4  {{celular}} / {{fijo}}
+          h4  {{email}}
+          h4  {{calle}}  {{dirNro}}, {{data.ciudad}}, Buenos Aires, Argentina
+      // COLUMNA IZQUIERDA
+      .row
+        #columIzq.col-md-8
+          #seccion1A.seccion
+            h2 Introducción Personal:
+            p
+              b.lead Perfil profesional:
+              | {{perfilProfesional}}
+            p
+              b.lead Objetivo laboral:
+              | {{objLab}}
+          #seccion2A.seccion
+            h2 Experiencias más Destacadas:
+            ul
+              li
+                h1
+                  | {{exp1.NombreOrg}}
+                  small  ({{exp1.IndustriaOrg}})
+                h4  ({{exp1.fechaING}} - {{exp1.fechaEGR}})
+                h3
+                  b  {{exp1.Pos}}
+                h3  Logros obtenidos: {{exp1.Log}}
+                h3  Tareas realizadas: {{exp1.Tar}}
+              li
+                h1
+                  | {{exp2.NombreOrg}}
+                  small  ({{exp2.IndustriaOrg}})
+                h4  ({{exp2.fechaING}} - {{exp2.fechaEGR}})
+                h3
+                  b  {{exp2.Pos}}
+                h3  Logros obtenidos: {{exp2.Log}}
+                h3  Tareas realizadas: {{exp2.Tar}}
+              li
+                h1
+                  | {{exp3.NombreOrg}}
+                  small  ({{exp3.IndustriaOrg}})
+                h4  ({{exp3.fechaING}} - {{exp3.fechaEGR}})
+                h3
+                  b  {{exp3.Pos}}
+                h3  Logros obtenidos: {{exp3.Log}}
+                h3  Tareas realizadas: {{exp3.Tar}}
+        // COLUMNA DERECHA
+        #columDer.col-md-4
+          #seccion1B.seccion
+            h2
+              span.glyphicon.glyphicon-education
+              |  Formación Academica:
+            ul
+              li
+                h3
+                  b  {{form1.NombreTitulo}}
+                h3  {{form1.NombreInst}}
+                h3
+                  b  {{form1.Materias}}/{{form1.TotalMaterias}}
+              li
+                h3
+                  b  {{form2.NombreTitulo}}
+                h3  {{form2.NombreInst}}
+                h3
+                  b  {{form2.Materias}}/{{form2.TotalMaterias}}
+          #seccion2B.seccion
+            h2 Competencias Profesionales:
+            h3  Habilidades Blandas
+            ul
+              li {{data.softskill1}}
+              li {{data.softskill2}}
+              li {{data.softskill3}}
+              li {{data.softskill4}}
+              li {{data.softskill5}}
+            h3  Idiomas
+            h4
+              | {{data.lengua2}}                    Nivel: {{data.lengua2lvl}}
+              span#certiLeng2.glyphicon.glyphicon-bookmark
+            h4
+              | {{data.lengua3}}                    Nivel: {{data.lengua3lvl}}
+              span#certiLeng3.glyphicon.glyphicon-bookmark
+            h3  Conocimientos Duros
+            h4
+              | Paquete Office                  Nivel: {{data.officelvl}}
+              span#certiOffi.glyphicon.glyphicon-bookmark
+            h4
+              | Programación                  Nivel: {{data.programacionlvl}}
+              span#certiProg.glyphicon.glyphicon-bookmark
+      // PIE
+      .row
+        #pie.col-md-12
+          h4  Edad: {{edad}} años   DNI: {{DNI}}   Nacionalidad: Argentino
+          h4  Estado Civil: {{data.estadoCivil}}
+          #top.container-fluid.Print(align='left')
+            img#logo.img-responsive(src='http://s16.postimg.org/vgikqw3sl/Amblex_Logo.png')
+  //
+    <footer class="noPrint" align="center">
+    <h6> El proyecto aún esta en face beta y necesita considerablemente un tiempo prudencial de testing </h6>
+    <a mp-mode="dftl" href="https://www.mercadopago.com/mla/checkout/start?pref_id=128345783-b60e3354-031f-4bab-950c-43857b508dfc" name="MP-payButton" class='blue-ar-l-rn-arall' data-toggle="tooltip" data-placement="right" title="¡Ahora incorporé MercadoPago!">Donar</a>
+    <script type="text/javascript">
+    (function(){function $MPBR_load(){window.$MPBR_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = ("https:"==document.location.protocol?"https://www.mercadopago.com/org-img/jsapi/mptools/buttons/":"http://mp-tools.mlstatic.com/buttons/")+"render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPBR_loaded = true;})();}window.$MPBR_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPBR_load) : window.addEventListener('load', $MPBR_load, false)) : null;})();
+    </script>
+    </footer>
